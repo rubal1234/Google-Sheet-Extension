@@ -1,0 +1,3551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base target="_top">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
+  <script src="https://helplama.com/app/libraries/boot_library.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link rel="stylesheet" href="https://helplama.com/app/helplama_dashboard/google_sheet_sidebar/sidebar.css">
+ 
+
+  <style>
+    body{
+    font-family:Roboto;
+    margin-left : 2%;
+}
+.label{
+margin-bottom : -10%;
+font-family: 'Roboto';
+margin-left:2%;
+}
+input{
+margin-left:2%;
+max-width : 91%;
+font-size : 14px;
+border-radius : 8px;s
+border : 1px solid #707070;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+font-family: Roboto;
+outline : none;
+}
+#box{
+    display : block;
+    margin-top : 1%;
+    width: 56%;
+    height: calc(1.9em + .95rem + 2px);
+}
+#box:hover{
+border :2px solid #4169E1;
+}
+#box:focus{
+border :2px solid #1D7BF5;
+border-radius : 8px;
+outline : none;
+}
+.tkt-error{
+width : 80%;
+background : #f8d7da;
+color : #721c24;
+margin-top : 2%;
+padding : 5px;
+font-size : 22px;
+font-family: Roboto;
+display : inline-block;
+}
+#error-msg{
+display:none;
+}
+#time{
+margin-left : -14%;
+position:absolute;
+top:22%;
+background : #f8d7da;
+border : none;
+}
+#time:hover{
+color:white;
+}
+.btn1{
+background :#393939;
+margin-left : 5%;
+font-size : 13px;
+border-radius : 6px;
+padding : 10px;
+width : 30%;
+outline :none;
+border :none;
+color : white;
+font-family: Roboto;
+cursor : pointer;
+}
+.btn1{
+display : none;
+}
+#previousBtn{
+background :none; 
+margin-left : 5%;
+font-size : 13px;
+border-radius : 5px;
+padding : 1px;
+width : 100px;
+outline :none;
+border :1px solid #AAAAAA;
+margin-top : 1%;
+font-family: Roboto;
+cursor : pointer;
+
+}
+#nextBtn{
+background :#AAAAAA 0% 0% no-repeat padding-box;
+margin-left : 5%;
+font-size : 13px;
+border-radius : 6px;
+box-shadow: 0px 3px 6px #00000029;
+padding : 1px;
+width : 100px;
+outline :none;
+border :none;
+color : white;
+font-family: Roboto;
+cursor : pointer;
+}
+#main{
+margin-top:-16%;
+margin-left:59%;
+    position: absolute;
+}
+.bt1:hover{
+border : none;
+outline:none;
+}
+.sentiments,.orderStatus,.returnlabelsts,.other-tickets,.orderOptions,.optionsId{
+    width: 90%;
+    margin-top: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size : 15px;
+    margin-left: 2%;
+    cursor: pointer; 
+    font-family: Roboto;
+    background-color: #E8E8E8;
+    color : #656565;
+    border : none;
+    border-radius : 12px;
+    padding: .375rem .75rem;
+    padding-right : 51px;
+    height : 40px;
+    box-shadow: 0px 3px 6px #00000029;
+}
+.returnlabelsts{
+font-family : Roboto;
+cursor : pointer;
+outline : none;
+}
+.orderStatus_div{
+   margin-top : 2%;
+   display : none;
+}
+.orderDetail{
+   margin-top : 5%;
+  }
+ .other-tickets:focus{
+    background-color: #E8E8E8;
+    border :none;
+    outline : none;
+ }
+.sentiments:focus{
+   background-color: #E8E8E8;
+}
+
+.orderStatus:focus{
+   background-color: #E8E8E8;
+   border:none;
+   outline:none;
+}
+.returnlabelsts:focus{
+    background-color: #E8E8E8;
+}
+.orderOptions:focus{
+    background-color: #E8E8E8;
+    outline : none;
+    border : none;
+}
+.option{
+border-radius : 5px;
+font-size : 16px;
+outline : none;
+width : 80%;
+padding : 4px;
+font-family : Roboto;
+cursor : pointer;
+margin-top : 5%:
+}
+form {
+margin-top : 8%;
+}
+.form-adjust{
+/* margin-top:-30%; */
+display : none;
+}
+.orderFormTitle{
+   display : none;
+   margin-top : 7%;
+   margin-left : 2%;
+}
+form #sntmts,#orderDetailTitle,#orderFormTitle,.optionLabel{
+font-family : Roboto;
+font-weight : bold;
+font-size : 15px;
+margin-left : 2%;
+
+}
+
+#sntmts{
+margin-left: 2%;
+font-size : 15px;
+font-weight : bold;
+font-family : Roboto;
+}
+#stepProgressBar  {
+display:  flex;
+justify-content:  space-between;
+align-items:  flex-end;
+width:  280px;
+margin-top : -14%;
+margin-left : -41%;
+margin-bottom:  40px;
+}
+.step  {
+text-align:  center;
+margin-left : 7%;
+}
+.step-text1,.step-text2,.step-text3{
+  margin-bottom: 10px;
+  color: #707070;
+  text-align: left;
+  font-family: Roboto;
+  margin-left: 16px;
+  font-size: 12px;
+}
+.bullet {
+font-family : Roboto;
+height: 20px;
+width: 20px;
+border-radius: 100%;
+color: #0DB21E;
+display: inline-block;
+position: relative;
+transition: background-color 500ms;
+line-height:20px;
+}
+.bullet.completed  {
+color:  white;
+font-size : 13px;
+background-color: #AAAAAA;
+}
+.bullet.completed2  {
+color:  white;
+margin-left:15%;
+font-size : 13px;
+position : absolute;
+margin-top : -7%;
+margin-left : -6%;
+background-color: #AAAAAA;
+}
+.bullet.completed4{
+color:  white;
+font-size : 13px;
+background-color: #0DB21E;
+
+}
+.bullet.completed4::after{
+content: '';
+position: absolute;
+right: -108px;
+bottom: 10px;
+height: 1px;
+width: 109px;
+background-color:#AAAAAA;
+}
+.bullet.completed3  {
+color:  white;
+background-color: #0DB21E;
+
+}
+.bullet.completed::after {
+content: '';
+position: absolute;
+right: -78px;
+top: 9px;
+height: 1px;
+width: 71px;
+background-color:#AAAAAA;
+}
+.bullet.completed1  {
+color:  white;
+font-size : 13px;
+background-color: #0DB21E;
+
+}
+.shadowing{
+  box-shadow : 0px 3px  6px #00000052;
+}
+/* Base styles and helper stuff */
+.hidden  {
+display:  none;
+}
+
+.text-center  {
+text-align:  center;
+}
+.container_new  {
+max-width:  400px;
+/* height : 220px; */
+margin:  0  auto;
+margin-top:  0%;
+padding:  54px;
+margin-left : 3%;
+padding-bottom:0px;
+}
+.maintain{ 
+margin-top : -42%;
+display : none;
+}
+.form-adjust h2{
+font-size : 18px;
+font-family: 'Roboto';
+margin-left : 2%;
+}
+.maintain h2{
+font-size : 21px;
+font-family: 'Roboto';
+}
+#process{
+margin-bottom : 4%;
+}
+.handle{
+margin-top : -6%;
+}
+.form-group{
+  font-family : Roboto;
+}
+#track-link{
+font-family: Roboto;
+margin-top : 4%;
+display : none;
+}
+.track-link label{
+font-size : 15px;
+margin-left : 10%;
+font-family : Roboto;
+}
+.track-link input{
+margin-top : 0%;
+}
+.rltd-tckt{
+margin-top : 8%;
+font-family: Roboto;
+display : none;
+}
+.rltd-tckt label{
+font-size : 20px;
+}
+.rltd-tckt input{
+margin-top : 2%;
+font-size : 14px;
+}
+.add_field_button{
+/* border-radius : 50%;
+width : 32px;
+height : 32px;
+background :#414141;
+border : none;
+cursor : pointer;
+position : absolute;
+margin-top : 7%;
+margin-left : 5%;
+outline  : none; */
+
+    margin-left: 4%;
+}
+
+.add4{
+border-radius : 50%;
+width : 22px;
+height : 22px;
+background :#414141;
+border : none;
+cursor : pointer;
+margin-top : -14%;
+margin-left : 60%;
+outline  : none;
+}
+#add3{
+border-radius : 50%;
+width : 32px;
+height : 32px;
+background :#414141;
+border : none;
+cursor : pointer;
+margin-top : -14%;
+margin-left : 60%;
+outline  : none;
+display : none;
+}
+.adjust{
+margin-top : -14.5%;
+margin-left : 60%;
+}
+#demo{
+max-width : 50%;
+border-radius : 6px;
+border : 2px solid rgba(0,0,0,0.5); 
+margin-top : 4%;
+padding : 10px;
+font-size : 14px;
+font-family: Roboto;
+display : none;
+}
+#minus{
+/* border-radius : 50%;
+width : 17px;
+height : 17px;
+position : absolute;
+border : none;
+background :#414141;
+cursor : pointer;
+margin-top : 10.5%;
+margin-left : -12%; */
+    margin-left: 4%;
+}
+.adjust2{
+width : 32px;
+height : 32px;
+background : rgba(89, 171, 227, 1);
+display : none;
+border-radius : 50%;
+margin-left : 67%;
+margin-top : -19.5%;
+}
+.switch {
+position: relative;
+
+display: inline-block;
+width: 60px;
+height: 29px;
+margin-left :12%;
+}
+.switch input { 
+opacity: 1;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+font-size : 14px;
+background-color: red;
+-webkit-transition: .4s;
+transition: .4s;
+}
+.slider:before {
+position: absolute;
+content : ""; 
+height: 20px;
+width: 20px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+input:checked + .slider {
+background-color:#0DB21E;
+}
+input:focus + .slider {
+box-shadow: 0 0 1px;
+}
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+.slider.round {
+border-radius: 34px;
+}
+.slider.round:before {
+border-radius: 50%;
+}
+#text{
+margin-top :-10px;
+width: 225px;
+height: 44px;
+border: 1px solid #707070;
+border-radius: 12px;
+display : none;
+}
+#text:focus{
+border: 1px solid #707070;
+outline : none;
+}
+.related_ticket_ids{
+margin-top :15px;
+width: 68%;
+border: 2px solid #B8B8B8;
+border-radius: 15px;
+}
+.related_ticket_ids:hover{
+      border : 2px solid #0066FF;
+}
+#lama{
+display : none;
+height : 200px;
+background: #ddd;
+border : 2px solid #ddd;
+width : 95%;
+margin-top : 5%;
+margin-bottom : -1%;
+}
+#lama:focus{
+border : 2px solid #ddd;
+outline : none; 
+}
+#button11{
+background-color: rgb(0, 102, 255);
+border: none;
+color: white;
+width : 44%;
+position : absolute;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 13px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius : 5px;
+outline : none;
+}
+#button22{
+background-color:#0DB21E;
+border: none;
+color: white;
+text-align: center;
+width : 42%;
+text-decoration: none;
+display: inline-block;
+font-size: 13px;
+position :absolute;
+margin-left : 51%;
+margin-top : 0.85%;
+cursor: pointer;
+border-radius : 5px;
+outline : none;
+}
+#templates{
+display : none;
+}
+#rls{
+margin-top : 5%;
+font-size : 16px;
+font-weight : bold;
+font-family : Roboto;
+}
+#yn{
+margin-left : -45%;
+margin-top : 6%;
+
+pointer-events: none ;
+
+}
+#yn2{
+position : absolute;
+top: 13%;
+left : 115%;
+    pointer-events: none;
+
+}
+#all_main_options_div_id{
+margin-top : -18%;
+}
+#no_temp_btn_div{
+display : none;
+width : 114%;
+margin-left : -16%;
+}
+#status_loader_text{
+display : none;
+}
+.status{
+  display : none;
+  margin-top : 5%;
+}
+.danger,.danger2,.danger3,.danger4,.danger5,.danger6,.danger7,.danger8,.danger10{
+    height : 17px;
+    width : 17px;
+    background: #D4012C;
+    color : white;
+    display : none;
+    border-radius: 50%;
+  }
+ .danger6{
+   margin-left : 4%;
+   margin-top : 2%;
+ }
+/* .form-control{
+margin-left : -6%;
+margin-top : 10%;
+} */
+.form-control{
+  font-family : Roboto;
+ 
+}
+#p1,#p2,#p3,#p4,#p5,#p7,#p8,#p10{
+color : #6E6E6E;
+margin-left : -4%;
+font-size : 13px;
+font-family : Roboto;
+display : none;
+margin-bottom : auto;
+}
+#p6{
+color : #656565;
+display : none;
+margin-left : 2%;
+margin-top : 5%;
+}
+#maintain{
+display : none;
+}
+#camp{
+margin-top : 5px;
+}
+#tick,#tick2,#tick3,#tick4,#tick5{
+display:none;
+}
+ul{
+margin: 12px;
+padding: 0;
+}
+ul li{
+margin: 5px 10px 14px -9px;
+font-size: .9em;
+line-height: 1em;
+}
+body:nth-of-type(1) ul li{
+list-style-type:none;
+padding: 0 0 0 30px;
+position:relative;
+}
+body:nth-of-type(1) ul li:before{
+/*fill it with a blank space*/
+content:"\00a0";
+/*make it a block element*/
+display: block;
+/*adding an 8px round border to a 0x0 element creates an 8px circle*/
+border: solid 9px #00CD00;
+border-radius: 9px;
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+height: 0;
+width: 0;
+/*Now position it on the left of the list item, and center it vertically
+(so that it will work with multiple line list-items)*/
+position: absolute;
+left: 7px;
+top: 40%;
+margin-top: -8px;
+}
+body:nth-of-type(1) ul li:after{
+/*Add another block-level blank space*/
+content:"\00a0";
+display:block;
+/*Make it a small rectangle so the border will create an L-shape*/
+width: 7px;
+height: 10px;
+/*Add a white border on the bottom and left, creating that 'L' */
+border: solid #fff;
+border-width: 0 2px 2px 0;
+/*Position it on top of the circle*/
+position:absolute;
+left: 13px;
+top: 33%;
+margin-top: -4px;
+/*Rotate the L 45 degrees to turn it into a checkmark*/
+-webkit-transform: rotate(45deg);
+-moz-transform: rotate(45deg);
+-o-transform: rotate(45deg);
+}
+.tickbg {content:"\00a0";
+border: solid 8px #00CD00;
+border-radius: 9px;
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+height: 0;
+width: 0;
+display: block;}
+.tick {height: 6px;
+width: 3px;
+border: solid #FFFFFF;
+border-width: 0px 2px 2px 0px;
+-webkit-transform: rotate(45deg);
+-moz-transform: rotate(45deg);
+-o-transform: rotate(45deg);
+display: block;
+margin-top: -5px;
+margin-left: -2px;
+}
+#cross_tck_mark1,#cross_tck_mark2,#cross_tck_mark3,#cross_tck_mark4,#cross_tck_mark5{
+display: none;
+margin-top:2%;
+left : 1%;
+}
+#cross_tck_mark6{
+display: none;
+margin-top:5%;
+left : 1%;
+}
+.holder {
+position : relative;
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
+}
+.checkdiv {
+position: relative;
+padding: 4px 8px;
+border-radius:40px;
+margin-bottom:4px;
+min-height:30px;
+padding-left:40px;
+display: flex;
+align-items: center;
+}
+.checkdiv:last-child {
+margin-bottom:0px;
+}
+.checkdiv span {
+position: relative;
+vertical-align: middle;
+line-height: normal;
+}
+.le-checkbox {
+appearance: none;
+position: absolute;
+top:80%;
+left:8px;
+transform:translateY(-50%);
+background-color: #F44336;
+width:16px;
+height:16px;
+border-radius:40px;
+border : none;
+margin:0px;
+outline: none; 
+transition:background-color .5s;
+}
+.le-checkbox:before {
+content:'';
+position: absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) rotate(45deg);
+background-color:#ffffff;
+width:13px;
+height:2px;
+border-radius:40px;
+transition:all .5s;
+}
+.le-checkbox:after {
+content:'';
+position: absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) rotate(-45deg);
+background-color:#ffffff;
+width:13px;
+height:2px;
+border-radius:40px;
+transition:all .5s;
+}
+#no_temp_found{
+/* margin-top : -30%; */
+
+}
+.danger-sign{
+   position : absolute;
+   top:-5%;
+}
+#no_temp_btn_div{
+margin-left:2px !important;
+}
+
+.actions_btn{
+    display: inline-flex;
+    position: absolute;
+   margin-left : 72%;
+   margin-top :-15%;
+}
+
+#container_first, #logo_img{
+  display:none !important;
+}
+
+.errors_div{
+      width: fit-content;
+    margin-top: 10px;
+
+}
+
+  .select_temp_type {
+    margin-right: 3%;
+    margin-left: 2%;
+    margin-top: 1%;
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 4px !important;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 2px solid #bbbbbb;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+
+/* optional styles, I'm using this for centering radiobuttons */
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+
+.disabledinput {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+.enabledinput {
+  opacity: 1;
+  pointer-events: all;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.switch {
+	position: relative;
+	display: block;
+	vertical-align: top;
+	width: 75px;
+	height: 30px;
+	padding: 3px;
+	margin: 0 10px 10px 0;
+	background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+	background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+	border-radius: 18px;
+	box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	box-sizing:content-box;
+}
+.switch-input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	box-sizing:content-box;
+}
+.switch-label {
+	position: relative;
+	display: block;
+	height: inherit;
+	font-size: 10px;
+	text-transform: uppercase;
+	background: #eceeef;
+	border-radius: inherit;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+	box-sizing:content-box;
+}
+.switch-label:before, .switch-label:after {
+	position: absolute;
+	top: 50%;
+	margin-top: -.5em;
+	line-height: 1;
+	-webkit-transition: inherit;
+	-moz-transition: inherit;
+	-o-transition: inherit;
+	transition: inherit;
+	box-sizing:content-box;
+}
+.switch-label:before {
+	content: attr(data-off);
+	right: 11px;
+	color: #aaaaaa;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+.switch-label:after {
+	content: attr(data-on);
+	left: 11px;
+	color: #FFFFFF;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+}
+.switch-input:checked ~ .switch-label {
+	/* background: #E1B42B; */
+      background-color: #0DB21E;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.switch-input:checked ~ .switch-label:before {
+	opacity: 0;
+}
+.switch-input:checked ~ .switch-label:after {
+	opacity: 1;
+}
+.switch-handle {
+	position: absolute;
+	top: 5px;
+	left: 4px;
+	width: 25px;
+	height: 25px;
+	background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+	background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+	border-radius: 100%;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.switch-handle:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -6px 0 0 -6px;
+	width: 12px;
+	height: 12px;
+	background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+	background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+	border-radius: 6px;
+	box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+}
+.switch-input:checked ~ .switch-handle {
+	left: 50px;
+	box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+ 
+/* Transition
+========================== */
+.switch-label, .switch-handle {
+	transition: All 0.3s ease;
+	-webkit-transition: All 0.3s ease;
+	-moz-transition: All 0.3s ease;
+	-o-transition: All 0.3s ease;
+}
+
+.row{
+   margin-left : 0px;
+   margin-right : 0px;
+}
+
+#main_loader{	
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height:100%;
+  display: none;
+  background: rgba(0,0,0,0.6);
+  margin-left : -2%;
+}
+.cv-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px #ddd solid;
+  border-top: 4px #2e93e6 solid;
+  border-radius: 50%;
+  animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+.is-hide{
+  display:none;
+}
+.select_options{
+   background-color: #E8E8E8;
+   box-shadow: 0px 3px 6px #00000029;
+   color : #656565;
+   border-radius : 12px;
+   padding-right : 51px;
+   border : none;
+   height : 40px;
+}
+.select_options:focus{
+  background-color: #E8E8E8;
+}
+
+	  .swal-text {
+  font-size: 14px;
+  text-align: center;
+  font-family : Roboto;
+  margin-top:-6%;
+}
+
+.swal-modal {
+  height: auto;
+}
+.swal-footer{
+	 text-align: center;
+	}
+ .swal-icon:first-child{
+   width : 29px;
+   height : 29px;
+   margin-top : 15px;
+ }
+ .swal-icon--warning__body{
+    height : 14px;
+ }
+ .swal-icon--warning__dot{
+   margin-left : -3px;
+   bottom : -10px;
+ }
+ 
+ .swal-icon--error__line{
+   background: #CF3212;
+ }
+ .swal-icon--error__line--right {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(90deg);
+    right: 6px;
+    top: 10px;
+    height: 4px;
+    width: 17px;
+	}
+    
+  .swal-icon--error__line--left {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    width: 4.5px;
+    left: 43%;
+    top: 22px;
+    height: 4.5px;
+    border-radius: 100%;
+}
+
+ .swal-icon--error{
+    border-color : #CF3212;
+ }
+ 
+ .swal-button--danger {
+    background-color : #CF3212;
+    border :none;
+    outline:none;
+    box-shadow : none;
+    font-family : Roboto;
+    margin-top : -37%;
+ }
+ .swal-button{
+    font-family : Roboto;
+     box-shadow : none;
+ }
+ 
+ .swal-button:focus{
+   box-shadow : none;
+ }
+ 
+ .swal-button--danger:focus{
+    border :none;
+    outline:none;
+    box-shadow : none;
+ }
+ 
+ .temp_btn {
+    display: block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: red;
+    margin-left  : -5%;
+    margin-top : -4%;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-family : Roboto;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+ .temp_btn2{
+    
+    font-weight: 400;
+    line-height: 1.5;
+    color: green;
+    margin-left  : -5%;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-family : Roboto;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.tempsts{
+   display : block;
+}
+.radiobuttonadjust{
+ position : absolute;
+ margin-top : 2.5%;
+ margin-left : 13%;
+}
+.error{
+  display : none;
+  outline : none;
+}
+
+svg{
+  margin-right : 4px;
+  margin-top : -3px;
+  
+}
+
+.active{
+  color : black;
+}
+
+.new_ticket{
+   display:none;
+}
+
+.new_ticket button{
+  background:none;
+  border : none;
+  outline : none;
+  color : #0066FF;
+  font-size : 15px;
+  font-family : Roboto;
+}
+.new_ticket button:hover{
+   color : #F29900;
+}
+.allclear{
+   color: #0066FF;
+   font-family :Roboto;
+   font-size : 15px;
+   margin-top : -3%;
+   cursor : pointer;
+}
+
+ select{
+  background-image:
+    linear-gradient(45deg, transparent 50%, #000000 60%),
+    linear-gradient(135deg, #000000 40%, transparent 50%) !important;
+  background-position:
+    calc(100% - 28px) 18px,
+    calc(100% - 23px) 18px,
+    100% 0;
+  background-size:
+    5px 8px,
+    5px 8px;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  overflow : hidden;
+}
+
+.order_added_date{
+box-shadow: 0px 3px 6px #00000029;
+border: 2px solid #B8B8B8;
+border-radius: 15px;
+height : 40px;
+width : 90%;
+font-size : inherit;
+font-family : Roboto;
+padding-left : 10px;
+color : #656565;
+cursor : pointer;
+}
+#t_link{
+box-shadow: 0px 3px 6px #00000029;
+border: 2px solid #B8B8B8;
+border-radius: 12px;
+height : 40px;
+margin-left : 5%;
+}
+
+#t_link:hover{
+     border : 2px solid #0066FF;
+}
+
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 0%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: none; /* Fallback color */
+  background-color: none; /* Black w/ opacity */
+  animation-name : example2;
+  animation-duration : 0.2s;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #AAE5AC;
+  box-shadow: 0px 3px 6px #0000005E;
+  margin: auto;
+  display : none;
+  padding: 14px;
+  border-radius : 8px;
+  border: none;
+  margin-top : -30%;
+  width: 80%;
+  height : 43px;
+  animation-name : example;
+  animation-duration : 0.4s;
+}
+@keyframes example2{
+0%{
+   display : block;
+}
+100%{
+   display : none;
+}
+}
+@keyframes example{
+   from{
+     margin-top:-35%;
+   }
+  to{
+    margin-top : -30%;
+    display : none;
+  }
+}
+.error_msg{
+  display : none;
+}
+ input[type="date"]::-webkit-calendar-picker-indicator {
+   
+  
+  border-radius: 4px;
+  margin-right: 2px;
+  opacity: 0.6;
+  filter: invert(0.1);
+  
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+#date {
+  width: 150px;
+  outline: none;
+  border: 1px solid #aaa;
+  padding: 6px 28px;
+  color: #aaa;
+}
+
+.date-container {
+  position: relative;
+  float: left;
+}
+  .date-text {
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    color: #aaa;
+  }
+  
+  .date-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* pointer-events: none; */
+    cursor: pointer;
+    color: #aaa;
+  }
+  .input-group-addon i{
+     position : absolute;
+     top : 12px;
+     right : 37px;
+     color : #6c757d;
+  }
+  .order_added_date:hover{
+   border : 2px solid #0066FF;
+}
+.input-group-addon i:hover{
+  color : #0066FF;
+  cursor:pointer;
+}
+.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
+    background: #f05862;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.datepicker table tr td.today:hover:hover {
+     color: #fff;
+     background: #f05862;
+    
+}
+.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
+    background: #f05862;
+    cursor: pointer;
+    border-radius: 50%;
+    color : #fff;
+}
+
+  .datepicker table tr td.today, .datepicker table tr td.today:hover, .datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:hover {
+    background-color: #fff;
+    background-image : none;
+    border-radius : 50%;
+}
+
+.datepicker table tr td.today:hover, .datepicker table tr td.today:hover:hover, .datepicker table tr td.today.disabled:hover, .datepicker table tr td.today.disabled:hover:hover, .datepicker table tr td.today:active, .datepicker table tr td.today:hover:active, .datepicker table tr td.today.disabled:active, .datepicker table tr td.today.disabled:hover:active, .datepicker table tr td.today.active, .datepicker table tr td.today:hover.active, .datepicker table tr td.today.disabled.active, .datepicker table tr td.today.disabled:hover.active, .datepicker table tr td.today.disabled, .datepicker table tr td.today:hover.disabled, .datepicker table tr td.today.disabled.disabled, .datepicker table tr td.today.disabled:hover.disabled, .datepicker table tr td.today[disabled], .datepicker table tr td.today:hover[disabled], .datepicker table tr td.today.disabled[disabled], .datepicker table tr td.today.disabled:hover[disabled] {
+     background-color:  #f05862; 
+}
+table{
+   font-family : Roboto;
+}
+.datepicker thead tr:first-child th:hover, .datepicker tfoot tr th:hover {
+    background: none;
+}
+.datepicker table tr td.active.active{
+    background-color: #f05862;
+}
+
+.datepicker table tr td.active, .datepicker table tr td.active:hover, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover {
+    background-color: #fff;
+    background-image : none;
+    border-radius : 50%;
+    color : #fff;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 25%);
+}
+.datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .datepicker table tr td.active.disabled, .datepicker table tr td.active:hover.disabled, .datepicker table tr td.active.disabled.disabled, .datepicker table tr td.active.disabled:hover.disabled, .datepicker table tr td.active[disabled], .datepicker table tr td.active:hover[disabled], .datepicker table tr td.active.disabled[disabled], .datepicker table tr td.active.disabled:hover[disabled] {
+    background-color: #f05862;
+    color : #fff;
+}
+
+.datepicker table tr td.active.active{
+   background-color : #fff;
+   color : #000;
+}
+  
+.orderDetailBox{
+   background: #FFFFFF 0% 0% no-repeat padding-box;
+   box-shadow: 0px 3px 6px #00000029;
+   border-radius: 14px;
+   margin-left : 2%;
+   width : 90%;
+   border-bottom: 6px solid #279BE8;
+   padding-bottom :1rem;
+   margin-bottom : 12%;
+}
+.optionLabel,#sntmts2{
+  font-family : Roboto;
+  font-weight : bold;
+  font-size : 15px;
+  margin-left : 10%;
+  margin-top : 6%;
+  margin-bottom : 3px;
+}
+#rlsx{
+  font-family : Roboto;
+  font-weight : bold;
+  font-size : 15px;
+  margin-left : 10%;
+  margin-top : 6%;
+  margin-bottom : 3px;
+}
+.optionsId{
+  margin-left : 5%;
+}
+.orderStatus{
+   margin-left : 5%;
+ }
+.optionsId:focus{
+   border : none;
+   outline : none;
+}
+#arrow,#arrow2{
+    float: right;
+    margin-top: 4%;
+    margin-right: 7%;
+    font-size: 22px;
+    color : #6c757d;
+    font-weight : 400;
+    cursor : pointer;
+    display : none;
+    transform: rotate(180deg);
+}
+#trash{
+    float: right;
+    margin-top: 6%;
+    margin-right: 8%;
+    font-size: 14px;
+    cursor : pointer;
+}
+.order_actions{
+    border-bottom: 1px solid #ABABAB;
+    padding-bottom : 12px;
+}
+.plus_icon{
+     width:25px;
+     height : 25px;
+     background: #F9F9F9 0% 0% no-repeat padding-box;
+     box-shadow: 0px 3px 6px #00000029;
+     border-radius : 50%;
+     margin:8% auto;
+     text-align : center;
+     margin-bottom : 0px;
+ }
+ 
+ .plus_button{
+    color : #7B7B7B;
+    border:none;
+    background : none;
+ }
+ .plus_button:focus{
+    outline : none;
+    border : none;
+ }
+.plus_icon_text{
+     margin : auto;
+     font-size : 15px;
+     color : #606060;
+     text-align : center;
+ }
+ 
+.order_added_date{
+   margin-left : 5%;
+}
+.returnlabelsts{
+  margin-left : 5%;
+}
+
+.row1,.row2,.row3,.row4,.row5,.row6{
+  display : none;
+}
+.dangerx,.dangerx1,.dangerx2,.dangerx3,.dangerx4,.dangerx5{
+    height : 17px;
+    width : 17px;
+    background: #D4012C;
+    color : white;
+    border-radius: 50%;
+}
+.dangerx span{
+    position: absolute;
+    margin-left: -12%;
+    margin-top: -8%;
+}
+.dangerx1 span{
+    position: absolute;
+    margin-left: -12%;
+    margin-top: -8%;
+}
+.dangerx2 span{
+    position: absolute;
+    margin-left: -12%;
+    margin-top: -8%;
+}
+.dangerx3 span{
+    position: absolute;
+    margin-left: -12%;
+    margin-top: -8%;
+}
+.dangerx4 span{
+    position: absolute;
+    margin-left: -12%;
+    margin-top: -8%;
+}
+.dangerx5 span{
+    position: absolute;
+    margin-left: -12%;
+    margin-top: -8%;
+}
+#px,#px1,#px3,#px4,#px5{
+ color : #6E6E6E;
+margin-left : 13%;
+margin-top : -12%;
+font-size : 13px;
+font-family : Roboto;
+margin-bottom : auto;
+}
+#px2{
+color : #6E6E6E;
+font-size : 13px;
+margin-left : 13%;
+margin-top : -12%;
+font-family : Roboto;
+margin-bottom : auto;
+}
+.returnlabelsts_div{
+  display : none;
+}
+.returnlabelsts_select{
+   width: 90%;
+    margin-top: 2px;
+    font-size: 15px;
+    margin-left: 5%;
+    cursor: pointer;
+    font-family: Roboto;
+    background-color: #E8E8E8;
+    color: #656565;
+    border: none;
+    border-radius: 12px;
+    padding: .375rem .75rem;
+    padding-right: 51px;
+    height: 40px;
+    box-shadow: 0px 3px 6px #00000029;
+}
+.otherId_div{
+  margin-top : 5%;
+  display : none;
+}
+.otherId{
+   box-shadow: 0px 3px 6px #00000029;
+    border: 2px solid #B8B8B8;
+    border-radius: 12px;
+    height: 40px;
+    margin-left: 5%;
+    width: 90%;
+    padding-left: 12px;
+    color : #656565;
+    font-family: 'Roboto';
+    font-size: inherit;
+}
+.track_link{
+  color : #656565;
+}
+</style>
+
+</head>
+<body>
+     <!--anupam add 6 august-->
+       <!-- Modal -->
+      <div class="modal fade" id="error_ticket_id" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+              <p class="same_sheet"><span class="error_diff_cell"></span><span class="last_selected_row_no_val"></span></p>
+              <p class="diff_sheet"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default no_select" ></button>
+              <button type="button" class="btn btn-default yes_select" data-dismiss="modal"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!--anupam added 6 august-->
+       
+       <div class="modal fade" id="submit_temp_sugg" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="submit_review_div_modal">
+              
+            </div>
+            <div class="modal-footer" id="submit_sugg_btn_div">
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--anupam added 11 august-->
+       
+       <div class="modal fade" id="prev_selection" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="prev_div_modal">
+              
+            </div>
+            <div class="modal-footer" id="prev_btn_div">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--anupam added 12 august-->
+       
+       <div class="modal fade" id="ticket_id_error" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" id="ticket_id_error_div_modal">
+              
+            </div>
+            <div class="modal-footer" id="ticket_id_error_btn_div">
+            
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+        <div id="main_loader" class = "main_loader">
+         <div class="cv-spinner">
+           <span class="spinner"></span>
+           </div>
+        </div>
+     
+      <div id="myModal" class="modal">
+
+         <!-- Modal content -->
+             <div class="modal-content">
+              
+                  <p class = "text-center" style = "margin-top:-3%;font-family:Roboto"id = "templateinfo">Template Copied!</p>
+             </div>
+
+        </div>
+        
+      <div class = "label">
+    <h3 style="font-weight:bold;font-size:18px;margin-top:5%;">Enter Ticket</h3>
+    <br>
+  </div>
+  <input id = "box" class="form-control" type = "text" placeholder = "Enter Ticket" onkeyup="EnableDisable(this)" onpaste = "enabledisable()">
+  <div id = "main">
+    <button id="nextBtn"  disabled>Next</button><br>
+    <!-- <button id="nextBtn" onclick = "myFunction3()" disabled>Next</button><br> -->
+    <button id="previousBtn"   onclick = "myFunction2()" disabled>Back</button>
+  </div>
+ 
+  
+  <div id = "error-msg">
+    <div class = "tkt-error">
+      Ticket Error
+    </div>
+    <button  id = "time" onclick = "check();"><i class="fa fa-times" aria-hidden="true" style = "font-size : 20px;cursor:pointer;"></i></button>
+  </div>
+  <div class = "new_ticket">
+   <button onclick ="resetData();">Enter New Ticket Id</button>
+    </div>
+  <div class="container_new">
+    <div id="stepProgressBar">
+      <div class="step">
+        <div class="bullet completed4 shadowing" id = "bullet0">1</div>
+        <p class="step-text1 active">Enter Ticket Id</p>
+      </div>
+      <div class="step">
+        <div class="bullet completed" id = "bullet">2</div>
+        <p class="step-text2">Add Email Details</p>
+      </div>
+      <div class="step">
+        <div class="bullet completed2" id = "bullet2">3</div>
+        <p class="step-text3">Add Ticket Process</p>
+      </div>
+    </div>
+  </div>
+  <div class = "maintain" id = "maintain">
+    <!-- <form> -->
+      <h2 id = "tckt-process" style = "font-weight:bold;margin-left:2%;">Add Ticket Process </h2>
+      <br>  
+    <!-- </form> -->
+  </div>
+  <div class = "form-adjust" id = "form-adjust" style="margin-top: -12%;    padding: 12px;">
+    <h2 style = "font-weight:bold;">Add Email Details</h2>
+    
+    <div class="sentiments_div form-group">
+
+      <label id = "sntmts">What is the sentiment of current email?</label>
+
+      <select name="sentiments"  id="sentiments" class = "sentiments form-control">
+        <option value = "Select Sentiment" selected = "selected" class = "option_style">Select Sentiment</option>
+        <option value = "Normal" class = "option_style">Normal</option>
+        <option value = "Satisfied with resolution/can ask for referral" class = "option_style">Satisfied with resolution/Can ask for referral</option>
+        <option value = "Exceptionally Happy/Might Give Referral Or Good Review" class = "option_style">Exceptionally Happy/Might Give Referral Or Good Review</option>
+        <option value = "Might file dispute/social media" class = "option_style">Might file dispute/Social media</option>
+        <option value = "Threatening to file dispute/Social media" class = "option_style">Threatening to file dispute/Social media</option>
+        <option value = "Already filed dispute/Social media" class = "option_style">Already filed dispute/Social media</option>
+      </select>
+      
+      <div class = "row">
+       <div class = "col-1 ml-0 mt-1">
+        <div class = "danger text-center">
+        <span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span>
+        </div>
+      </div>
+      <div class = "col-10  mt-1">
+       <p id = "p1" class="">Please Enter The Required Field</p>
+      </div>
+    </div>
+    
+     <div class = "orderDetail">
+           <label id = "orderDetailTitle">Does The Customer Have Order Details With Us?</label>
+           <select class = "orderOptions" onchange = "showOrderDetails()">
+              <option value = "Select Option" class = "option_style" selected >Select Option</option>
+              <option value="Yes" class = "option_style">Yes</option>
+              <option value="No" class = "option_style">No</option>
+          </select>
+        <div class = "row">
+         <div class = "col-1 ml-0 mt-1">
+          <div class = "danger10 text-center">
+            <span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span>
+           </div>
+          </div>
+        <div class = "col-10  mt-1">
+          <p id = "p10" class="">Please Enter The Required Field</p>
+          </div>
+       </div>
+      <div class = "orderFormTitle">
+          <label id = "orderFormTitle">Add Order Details:</label>
+           
+     
+            <div class = "order_actions"> 
+              <div class="plus_icon">
+                 <button  class = "plus_button" id = "add">+</button>
+               </div>
+              <p class = "plus_icon_text">Add more orders</p>
+           </div>
+        </div>
+   
+
+
+    <div id = "slider">
+      <label style = "font-family:Roboto;font-weight:bold;font-size:16px;margin-top:7%;margin-left:2%;font-size:15px;">Does The Costumer Have Other Tickets With Us?</label>
+      
+      
+     
+        <select class = "other-tickets" onchange="myData()">
+          <option value = "Select Option" class = "option_style" selected >Select Option</option>
+          <option value="Yes" class = "option_style">Yes</option>
+          <option value="No" class = "option_style">No</option>
+       </select>
+      <div class = "row">
+       <div class = "col-1 ml-0 mt-1">
+        <div class = "danger7 text-center">
+        <span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span>
+        </div>
+      </div>
+      <div class = "col-10  mt-1">
+       <p id = "p7" class="">Please Enter The Required Field</p>
+      </div>
+    </div>
+     
+    </div>
+    <div class="input_fields_wrap" id = "tickets_ids" style = "display:none;   margin-bottom: 30px;">
+      <div  style="position:relative;">
+        <input type="text" name="mytext[]" id = "text0" class="related_ticket_ids form-control" placeholder = "Enter Ticket Id" required>
+        <div class="actions_btn" style ="margin-left:86%;">
+          <button  class = "add_field_button btn btn-success" id = "add" style="color:#fff">+</button>
+         </div>
+         <div id="danger2" class="danger6 text-center" style="display: none;"> <span aria-hidden="true" class="danger_sign" style="position:absolute;margin-left:-1.5%;margin-top:-1%;">×</span><p style = "position:absolute;color:#6E6E6E;font-size:13px;margin-left:8%">Please Enter The Required Field</p>
+         </div>
+       </div> 
+   </div>
+   
+  
+  <script type = "text/javascript" >
+  
+  
+  
+  $(document).on('click','.plus_icon',function(e){
+     $('.order_actions').before('<div class = "orderDetailBox" style = "margin-top:12%;" id = "orderDetail"><i class="fal fa-trash" id = "trash"></i><i class="fa fa-angle-down" id = "arrow2"  aria-hidden="true"></i><div class = "optionsId_div"><label class = "optionLabel">Select Order Id: <br></label><select class = "optionsId"><option value = "Select Option">Select Option </option><option value = "89898">89898</option><option value = "90895">90895</option><option value = "98009">98009</option><option value = "89898">89898</option><option value = "89878">89878</option><option value = "90879">90879</option><option value = "Other">Other</option></select><div class = "row row1"><div class = "col-1 ml-0 mt-1"><div class = "dangerx text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px" class="">Please Enter The Required Field</p></div></div><div class = "otherId_div"><input type = "text" placeholder = "Enter Order Id" class = "otherId"><div class = "row row6"><div class = "col-1 ml-0 mt-1"><div class = "dangerx5 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px5" class="">Please Enter The Required Field</p></div></div></div></div><div class="orderStatus_div"><label id = "sntmts2" for="orderStatus">Select Order Status</label><select name="orderStatus" id="orderStatus" class = "orderStatus "><option value = "Select Order Status" selected = "selected" class = "option_style">Select Order Status</option><option value = "None" class = "option_style">None</option><option value = "Awaiting Shipment" class = "option_style">Awaiting Shipment</option><option value = "Awaiting Shipment for more than 5 days" class = "option_style">Awaiting Shipment for more than 5 days</option><option value = "Shipped But Pre-Shipment" class = "option_style">Shipped But Pre-Shipment</option><option value = "Shipped And In-Transit" class = "option_style">Shipped And In-Transit</option><option value = "Shipped (In-Transit) But No Movement For 5 days">Shipped (In-Transit) But No Movement For 5 days</option><option value = "Delivered But Not Received" class = "option_style">Delivered But Not Received</option><option value = "Delivered" class = "option_style">Delivered</option></select><div class = "row row2"><div class = "col-1 ml-0 mt-1"><div class = "dangerx1 text-center"><span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px1" class="">Please Enter The Required Field</p></div></div></div><div id = "status" class = "status"><label style = "margin-left:10%;font-weight:bold;font-family:Roboto;font-size:15px">Select Order Date</label><div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy"><input type = "text" id = "order-status" class = "order_added_date"   value = "" placeholder = "dd-mm-yyyy" autocomplete="off" onchange = "checkDate(this)" readonly/><span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span></div><div class = "row row3"><div class = "col-1 ml-0 mt-1"><div class = "dangerx2 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px2" class="">Please Enter The Required Field</p></div></div></div><div class = "track-link" id = "track-link" style = "margin-top:5%"><label style = "margin-left:10%;font-weight:bold;font-family:Roboto;font-size:15px">Enter Tracking Id</label><input type = "text"  id = "t_link" placeholder ="Enter Tracking Id" onKeyup = "checkTrackLink(this)" class="form-control track_link"><div class = "row row4"><div class = "col-1 ml-0 mt-1"><div class = "dangerx3 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px3" class="">Please Enter The Required Field</p></div></div></div><div class="returnlabelsts_div"><label id = "rlsx" for="orderStatus">Select Return Label</label><select name="orderStatus" id="returnlabelsts" class = "returnlabelsts_select form-control" onchange = "returnLabelChange(this)"><option value = "Select Return Label" selected = "selected" class = "option_style">Select Return Label</option><option value="None" class = "option_style">None</option><option value="Generated Return Label Now" class = "option_style">Generated Return Label Now</option><option value="Outstanding" class = "option_style">Outstanding</option><option value="Return Received" class = "option_style">Return Received</option></select><div class = "row row5"><div class = "col-1 ml-0 mt-1"><div class = "dangerx4 text-center"><span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px4" class="">Please Enter The Required Field</p></div></div></div></div>');    
+  })
+  
+  
+
+  $(document).on('click',"#datepicker", function(){
+    $(this).datepicker({
+      autoclose : true
+    }).datepicker("show");
+    
+  })
+  
+
+  
+  $(document).on('click','#trash',function(e){
+      $(this).parent('div').remove();
+  })
+ 
+
+
+  $(document).on('click','#arrow',function(e){
+   
+     var property = $('.orderStatus_div').css("display");
+    
+     if(property == "block"){
+     $(this).siblings('.orderStatus_div').css('display','none');
+     $(this).siblings('.orderStatus').val("Select Order Status");
+     $(this).siblings('.status').css('display','none');
+     $(this).siblings('.track-link').css('display','none');
+     $(this).siblings('.returnlabelsts_div').css('display','none');
+     $("#arrow").css({
+     "transform" : "rotate(0deg)",
+     "transition" : "0.5sec ease-in-out"
+     })
+    }else{
+     var value = $(this).parent('div').parent('div').find('.orderStatus').val();
+     
+     $(this).siblings('.orderStatus_div').css('display','block');
+     if(value == "Select Order Status" || value == "None"){
+     
+     $(this).siblings('.status').css('display','none');
+     $(this).siblings('.track-link').css('display','none');
+     $(this).siblings('.returnlabelsts_div').css('display','none');
+       
+     }else if(value == "Awaiting Shipment" || value == "Awaiting Shipment for more than 5 days"){
+       
+        $(this).siblings('.status').css('display','block');
+     
+     }else{
+    
+     $(this).siblings('.status').css('display','block');
+     $(this).siblings('.track-link').css('display','block');
+     $(this).siblings('.returnlabelsts_div').css('display','block');
+     }
+     $("#arrow").css({
+     "transform" : "rotate(-180deg)",
+     "transition" : "0.5sec ease-in-out"
+     })
+    }
+  })
+  
+   $(document).on('click','#arrow2',function(e){
+   
+     var property = $(this).siblings('.orderStatus_div').css("display");
+     if(property == "block"){
+     $(this).siblings('.orderStatus_div').css('display','none');
+     $(this).siblings('.orderStatus').val("Select Order Status");
+     $(this).siblings('.status').css('display','none');
+     $(this).siblings('.track-link').css('display','none');
+     $(this).siblings('.returnlabelsts_div').css('display','none');
+     $(this).closest('.orderDetailBox').find("#arrow2").css({
+     "transform" : "rotate(0deg)",
+     "transition" : "0.5sec ease-in-out"
+     })
+    }else{
+     var value = $(this).closest('.orderDetailBox').find('.orderStatus').val();
+     $(this).siblings('.orderStatus_div').css('display','block');
+     if(value == "Select Order Status" || value == "None"){
+     
+     $(this).siblings('.status').css('display','none');
+     $(this).siblings('.track-link').css('display','none');
+     $(this).siblings('.returnlabelsts_div').css('display','none');
+       
+     }else if(value == "Awaiting Shipment" || value == "Awaiting Shipment for more than 5 days"){
+       
+        $(this).siblings('.status').css('display','block');
+     
+     }else{
+    
+     $(this).siblings('.status').css('display','block');
+     $(this).siblings('.track-link').css('display','block');
+     $(this).siblings('.returnlabelsts_div').css('display','block');
+     }
+    $(this).closest('.orderDetailBox').find("#arrow2").css({
+     "transform" : "rotate(-180deg)",
+     "transition" : "0.5sec ease-in-out"
+     })
+    }
+  })
+  
+ 
+
+  $(document).on('change','.optionsId',function(e){
+ 
+     
+     var optionVal = $(this).find('option:selected').text();
+     $(this).parent('div').parent('div').find(".orderStatus").prop("selectedIndex",0);
+     $(this).siblings('.row1').css('display','none');
+    
+     $(this).parent('div').parent('div').find('.row2').css('display','none');
+     if(optionVal == "Select Option"){
+         $(this).parent('div').parent('div').find(".orderStatus_div").css("display","none");
+         $('#arrow').hide();
+     }else if(optionVal == "Other"){
+           $(this).siblings('.otherId_div').css("display","block");
+           $(this).parent('div').parent('div').find('.row6').css('display','none');
+           $(this).parent('div').parent('div').find(".orderStatus_div").css("display","block");
+           $(this).parent('div').parent('div').find('#arrow').css('display','block');
+           $(this).parent('div').parent('div').find('#arrow2').css('display','block');
+           
+     }else{
+       $(this).parent('div').parent('div').find(".orderStatus_div").css("display","block");
+       $(this).parent('div').parent('div').find('#arrow2').css('display','block');
+       $(this).siblings('.otherId_div').css("display","none");
+       $(this).parent('div').parent('div').find('#arrow').css('display','block');
+      
+     }
+     
+     var orderstsVal = $(this).closest('.orderDetailBox').find(".orderStatus").val();
+     if(orderstsVal == "Select Order Status"){
+        $(this).parent('div').parent('div').find('#status').hide();
+        $(this).parent('div').parent('div').find('#track-link').hide();
+        $(this).parent('div').parent('div').find('.returnlabelsts_div').hide();
+        $(this).closest('.orderDetailBox').find('.order_added_date').val("");
+        $(this).closest('.orderDetailBox').find('#t_link').val("");
+        $(this).closest('.orderDetailBox').find('.returnlabelsts_select').prop("selectedIndex",0);
+     }
+     
+  })
+ 
+
+  function showOptionId(){
+     var optionVal = $('.optionsId option:selected').text();
+     var check_status_flag = 0;
+     $('#arrow').show();
+     if(optionVal != "Select Option"){
+         check_status_flag = 1;
+        
+     }else{
+       check_status_flag = 0;
+      
+     }
+     return check_status_flag;
+  }
+ 
+  $(document).on('change','.orderStatus',function(e){
+  
+     var orderVal = $(this).find("option:selected").text();
+     $(this).siblings('.row2').css('display','none');
+     $(this).parent('div').parent('div').find(".row3").css("display","none");
+     $(this).parent('div').parent('div').find(".row4").css("display","none");
+     $(this).parent('div').parent('div').find(".row5").css("display","none");
+     if(orderVal == "Select Order Status" || orderVal == "None"){
+        $(this).parent('div').parent('div').find(".status").css("display","none");
+        $(this).parent('div').parent('div').find(".track-link").css("display","none");
+        $(this).parent('div').parent('div').find(".returnlabelsts_div").css("display","none");
+        
+                    
+     }else if(orderVal == "Awaiting Shipment" || orderVal == "Awaiting Shipment for more than 5 days"){
+        $(this).parent('div').parent('div').find(".status").css("display","block");
+        $(this).parent('div').parent('div').find(".track-link").css("display","none");
+        $(this).parent('div').parent('div').find(".returnlabelsts_div").css("display","none");
+       
+     }else{
+        $(this).parent('div').parent('div').find(".status").css("display","block");
+        $(this).parent('div').parent('div').find(".track-link").css("display","block");
+        $(this).parent('div').parent('div').find(".returnlabelsts_div").css("display","block");
+       
+     }
+  })
+  
+  
+  function showOrderDetails(){
+    var options = $('.orderOptions option:selected').text();
+    var flag = 0;
+    if(options == "Yes"){
+      $('.orderFormTitle').css('display','block');
+      
+      flag = 1;
+    }else{
+       $('.orderFormTitle').css('display','none');
+       
+       flag = 0;
+    }
+    return flag;
+ }
+
+
+
+$(document).on('change','.other-tickets',function(e){
+  $('.danger7').css('display','none');
+  $('#p7').css('display','none');
+})
+ 
+ 
+  $(document).ready(function () {
+  
+   
+    var max_fields = 100; //maximum input boxes allowed
+    var wrapper = $(".input_fields_wrap"); //Fields wrapper
+    var add_button = $(".add_field_button"); //Add button ID
+     
+    $(document).on('click',".add_field_button",function (e) { //on add input button click
+       e.preventDefault();
+          $('.input_fields_wrap').append('<div style="display: block; position:relative" class="append_new_tickets_val"><input type="text" name="mytext[]" class="related_ticket_ids form-control" placeholder="Enter Ticket Id" ><div class="actions_btn"><button class="add_field_button btn btn-success" id="add" style="color:#fff">+</button><button id="minus" class="remove_field btn btn-danger" style="color:#fff">-</button></div><div id="danger2" class="danger6 text-center" style="display: none;"><span aria-hidden="true" class="danger_sign" style="position:absolute;margin-left:-1.5%;margin-top:-1%;">×</span><p style="position:absolute;color:#6E6E6E;font-size:13px;margin-left:8%">Please Enter The Required Field</p></div></div>');
+      });
+
+
+  $(document).on("click", ".remove_field", function (e) { //user click on remove text
+     var x =0;
+      e.preventDefault();
+      
+      $(this).parent('div').parent('div').remove();
+     
+      })
+  });
+ 
+
+$(function (){
+  $(document).on('change',".orderOptions",function (e) {
+    var val = $(this).find("option:selected").text();
+    if (val != "Select Option") {
+    
+       $("#p10").css("display", "none");
+       $(".danger10").css("display", "none");
+        } 
+    });
+});
+
+
+$(function (){
+  $(document).on('change',"#returnlabelsts",function (e) {
+    var val3 = $(this).find("option:selected").text();
+    if (val3 != "Select Option") {
+      
+       $("#p3").css("display", "none");
+       $(".danger3").css("display", "none");
+     
+    } else {
+      
+       $("#p3").css("display", "block");
+       $(".danger3").css("display", "block");
+        }
+    });
+});
+
+$(function () {
+  $(document).on('change',"#sentiments",function (e) {
+    var val1 = $(this).find("option:selected").text();
+    
+    if (val1 != "Select Option") {
+   
+      $("#p1").css("display", "none");
+      $(".danger").css("display", "none");
+    } else {
+   
+      $("#p1").css("display", "block");
+      $(".danger").css("display", "block");
+    }
+
+  });
+});
+
+
+
+
+function checkDate(e) {
+
+  var val = $(e).closest('.orderDetailBox').find('.order_added_date').val();
+  if (val != "") {
+   $(e).closest('.orderDetailBox').find('.row3').hide();
+  } 
+}
+
+function returnLabelChange(e){
+  var val = $(e).closest('.orderDetailBox').find('.returnlabelsts_select').val();
+  if(val != "Select Return Label"){
+    $(e).closest('.orderDetailBox').find('.row5').hide();
+  }
+}
+
+function EnableDisable(box) {
+  //Reference the Button.
+  var btnSubmit = document.getElementById("nextBtn");
+  
+  //Verify the TextBox value.
+  if (box.value.trim() != "" && box.value != '') {
+    //Enable the TextBox when TextBox has value.
+    btnSubmit.disabled = false;
+    btnSubmit.style.background = "rgb(0, 102, 255)";
+  } else {
+    //Disable the TextBox when TextBox is empty.
+    btnSubmit.disabled = true;
+    btnSubmit.style.background = "#AAAAAA";
+  }
+};
+
+
+function enabledisable(){
+  var btnSubmit = document.getElementById("nextBtn");
+  btnSubmit.style.background = "rgb(0, 102, 255)";
+  btnSubmit.disabled = false;
+}
+
+
+function checkTrackLink(t_link) {
+  var val4 = $(t_link).closest('.orderDetailBox').find('.track_link').val();
+  if (val4.trim() != "") {
+   $(t_link).closest('.orderDetailBox').find('.row4').hide();
+  }
+};
+
+function activePlusButton(text) {
+  var btn = document.getElementById("add");
+  if (text.value.trim() != "") {
+    btn.disabled = false;
+    $("#p6").css("display", "none");
+    $("#cross_tck_mark6").css("display", "none");
+  } else {
+    btn.disabled = true;
+    $("#p6").css("display", "block");
+    $("#cross_tck_mark6").css("display", "block");
+  }
+};
+
+
+
+function showData(arr) 
+{
+  
+    if(arr[6] != "" && arr[6] != undefined){
+        $('.orderOptions').prop("selectedIndex",1);
+        $('.orderFormTitle').show();
+        $('.orderDetailBox').remove();
+        var append_val = "";
+        var id = arr[6];
+        var new_id = id+"";
+        var os = arr[1];
+        var new_id2 = new_id.split("--");
+        var new_os = os.split(',');     
+        var order_date = arr[4];
+         var new_order_date = order_date.split(',');
+         var track_link = arr[3]+"";
+         var tlink_val = track_link.split(',');
+     
+         var returnLabel = arr[2];
+         var new_returnLabel = returnLabel.split(',');
+  
+         for(var  i =0;i<new_id2.length;i++){
+         var value = new_id2[i];
+         var value2 = new_os[i];
+         var value3 = new_order_date[i];
+         var value4 = new_returnLabel[i];
+      
+          $('.order_actions').before('<div class = "orderDetailBox"  id = "orderDetail"><label class = "optionLabel">Select Order Id: <br></label><i class="fal fa-trash" id = "trash"></i><i class="fa fa-angle-down" id = "arrow2" aria-hidden="true" style = "display:block;"></i><select class = "optionsId" id = '+i+'><option value = "Select Option">Select Option </option><option value = "89898">89898</option><option value = "90895">90895</option><option value = "98009">98009</option><option value = "89898">89898</option><option value = "89878">89878</option><option value = "90879">90879</option><option value = "Other">Other</option></select><div class = "row row1"><div class = "col-1 ml-0 mt-1"><div class = "dangerx text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px" class="">Please Enter The Required Field</p></div></div><div class = "otherId_div" id = "otherId_div'+i+'"><input type = "text" placeholder = "Enter Order Id" class = "otherId" id = "otherId'+i+'"><div class = "row row6"><div class = "col-1 ml-0 mt-1"><div class = "dangerx5 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px5" class="">Please Enter The Required Field</p></div></div></div><div class="orderStatus_div"><label id = "sntmts2" for="orderStatus">Select Order Status</label><select name="orderStatus" id = "orderStatus'+i+'" class = "orderStatus"><option value = "Select Order Status" selected = "selected" class = "option_style">Select Order Status</option><option value = "None" class = "option_style">None</option><option value = "Awaiting Shipment" class = "option_style">Awaiting Shipment</option><option value = "Awaiting Shipment for more than 5 days" class = "option_style">Awaiting Shipment for more than 5 days</option><option value = "Shipped But Pre-Shipment" class = "option_style">Shipped But Pre-Shipment</option><option value = "Shipped And In-Transit">Shipped And In-Transit</option><option value = "Shipped (In-Transit) But No Movement For 5 days" class = "option_style">Shipped (In-Transit) But No Movement For 5 days</option><option value = "Delivered But Not Received" class = "option_style">Delivered But Not Received</option><option value = "Delivered" class = "option_style">Delivered</option></select><div class = "row row2"><div class = "col-1 ml-0 mt-1"><div class = "dangerx1 text-center"><span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px1" class="">Please Enter The Required Field</p></div></div></div><div id = "status'+i+'" style = "display:none;" class = "status"><label style = "margin-left:10%;font-weight:bold;font-family:Roboto;font-size:15px">Select Order Date</label><div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy"><input type = "text" id = "order-status'+i+'" class = "order_added_date"   value = "" placeholder = "dd-mm-yyyy" autocomplete="off" onchange = "checkDate(this)" readonly/><span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span></div><div class = "row row3"><div class = "col-1 ml-0 mt-1"><div class = "dangerx2 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px2" class="">Please Enter The Required Field</p></div></div></div><div class = "track-link" id = "track-link'+i+'" style = "margin-top:5%;display:none;"><label style = "margin-left:10%;font-weight:bold;font-family:Roboto;font-size:15px">Enter Tracking Id</label><input type = "text"  id = "t_link" placeholder ="Enter Tracking Id" onKeyup = "checkTrackLink(this)" class="form-control track_link" value = '+tlink_val[i]+'><div class = "row row4"><div class = "col-1 ml-0 mt-1"><div class = "dangerx3 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px3" class="">Please Enter The Required Field</p></div></div></div><div class="returnlabelsts_div" id = "returnlabel'+i+'"><label id = "rlsx" for="orderStatus">Select Return Label</label><select name="orderStatus" id="returnlabelsts'+i+'" class = "returnlabelsts_select form-control" onchange = "returnLabelChange(this)"><option value = "Select Return Label" selected = "selected" class = "option_style">Select Return Label</option><option value="None" class = "option_style">None</option><option value="Generated Return Label Now" class = "option_style">Generated Return Label Now</option><option value="Outstanding" class = "option_style">Outstanding</option><option value="Return Received" class = "option_style">Return Received</option></select><div class = "row row5"><div class = "col-1 ml-0 mt-1"><div class = "dangerx4 text-center"><span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px4" class="">Please Enter The Required Field</p></div></div></div></div>');    
+             
+             if(i==0){
+               $("#trash").remove();
+               $('.optionLabel').before('<i class="fa fa-angle-down" id = "arrow" aria-hidden="true"></i>');
+               $('#arrow').show();
+               $('#arrow2').remove();
+               }
+             
+         if(new_id2[i].startsWith("Other->")){
+             var value = ""; 
+             var k = new_id2[i].split('Other->');
+             value = k[1];
+             $('#'+i).prop("selectedIndex", 7);
+             $('#otherId_div'+i).show();
+             $('#otherId'+i).val(value);
+           }else{
+            value = new_id2[i];
+            $('#'+i).val(value);
+          }
+           if(value2 == ""){
+            $('#orderStatus'+i).val("Select Order Status");
+          }else{
+            $('#orderStatus'+i).val(value2);
+          }
+          $('.orderStatus_div').show();
+          $('#order-status'+i).val(value3);
+           if(value4 == ""){
+             $('#returnlabelsts'+i) .val("Select Return Label");
+          }else{
+             $('#returnlabelsts'+i).val(value4);
+          }
+          
+          if($('#orderStatus'+i).val() == 'Select Order Status' || $('#orderStatus'+i).val() == "None"){
+            $('#status'+i).hide();
+          }else if($('#orderStatus'+i).val() == "Awaiting Shipment" || $('#orderStatus'+i).val() == "Awaiting Shipment for more than 5 days"){
+            $('#status'+i).show();
+            
+        }else{
+          $('#status'+i).show();
+          $('#returnlabel' +i).show();
+          $('#track-link'+i).show();
+        }
+           
+      }
+       
+    }else{
+      $('.order_actions').before('<div class = "orderDetailBox"  id = "orderDetail"><i class="fa fa-angle-down" id = "arrow" aria-hidden="true"></i><div class = "optionsId_div"><label class = "optionLabel">Select Order Id: <br></label><select class = "optionsId"><option value = "Select Option">Select Option </option><option value = "89898">89898</option><option value = "90895">90895</option><option value = "98009">98009</option><option value = "89898">89898</option><option value = "89878">89878</option><option value = "90879">90879</option><option value = "Other">Other</option></select><div class = "row row1"><div class = "col-1 ml-0 mt-1"><div class = "dangerx text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px" class="">Please Enter The Required Field</p></div></div><div class = "otherId_div"><input type = "text" placeholder = "Enter Order Id" class = "otherId"><div class = "row row6"><div class = "col-1 ml-0 mt-1"><div class = "dangerx5 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px5" class="">Please Enter The Required Field</p></div></div></div></div><div class="orderStatus_div"><label id = "sntmts2" for="orderStatus">Select Order Status</label><select name="orderStatus" id="orderStatus" class = "orderStatus"><option value = "Select Order Status" selected = "selected" class = "option_style">Select Order Status</option><option value = "None" class = "option_style">None</option><option value = "Awaiting Shipment" class = "option_style">Awaiting Shipment</option><option value = "Awaiting Shipment for more than 5 days" class = "option_style">Awaiting Shipment for more than 5 days</option><option value = "Shipped But Pre-Shipment" class = "option_style">Shipped But Pre-Shipment</option><option value = "Shipped And In-Transit">Shipped And In-Transit</option><option value = "Shipped (In-Transit) But No Movement For 5 days" class = "option_style">Shipped (In-Transit) But No Movement For 5 days</option><option value = "Delivered But Not Received" class = "option_style">Delivered But Not Received</option><option value = "Delivered" class = "option_style">Delivered</option></select><div class = "row row2"><div class = "col-1 ml-0 mt-1"><div class = "dangerx1 text-center"><span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px1" class="">Please Enter The Required Field</p></div></div></div><div id = "status" class = "status"><label style = "margin-left:10%;font-weight:bold;font-family:Roboto;font-size:15px">Select Order Date</label><div id="datepicker" class="date input-group" data-date-format="dd-mm-yyyy"> <input type = "text" id = "order-status" class = "order_added_date"   value = "" placeholder = "dd-mm-yyyy" autocomplete="off" onchange = "checkDate(this)" readonly/><span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span></div><div class = "row row3"><div class = "col-1 ml-0 mt-1"><div class = "dangerx2 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px2" class="">Please Enter The Required Field</p></div></div></div><div class = "track-link" id = "track-link" style = "margin-top:5%"><label style = "margin-left:10%;font-weight:bold;font-family:Roboto;font-size:15px">Enter Tracking Id</label><input type = "text"  id = "t_link" placeholder ="Enter Tracking Id" onKeyup = "checkTrackLink(this)" class="form-control track_link"><div class = "row row4"><div class = "col-1 ml-0 mt-1"><div class = "dangerx3 text-center"><span aria-hidden="true" class="danger_sign">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px3" class="">Please Enter The Required Field</p></div></div></div><div class="returnlabelsts_div"><label id = "rlsx" for="orderStatus">Select Return Label</label><select name="orderStatus" id="returnlabelsts" class = "returnlabelsts_select form-control" onchange = "returnLabelChange(this)"><option value = "Select Return Label" selected = "selected" class = "option_style">Select Return Label</option><option value="None" class = "option_style">None</option><option value="Generated Return Label Now" class = "option_style">Generated Return Label Now</option><option value="Outstanding" class = "option_style">Outstanding</option><option value="Return Received" class = "option_style">Return Received</option></select><div class = "row row5"><div class = "col-1 ml-0 mt-1"><div class = "dangerx4 text-center"><span aria-hidden="true" class="danger_sign" style = "position:absolute;margin-left:-12%;margin-top:-9%;">&times;</span></div></div><div class = "col-11  mt-1"><p id = "px4" class="">Please Enter The Required Field</p></div></div></div></div>'); 
+      
+    }
+    
+    
+    if (arr[0] != "" && arr[0] != undefined) {
+      var x = arr[0];
+      $("#sentiments").val(x);
+
+    } else {
+      $("#sentiments").val("Select Sentiment");
+    }
+
+      //console.log(arr[5]);alert('sd');
+     if (arr[5] != "" && arr[5] != undefined) {
+      var order_ticket_val = arr[5]+"";
+      $('.other-tickets').prop('selectedIndex',1);
+      if(order_ticket_val != ''){
+        
+        var data_split = order_ticket_val.split(',');
+        console.log(data_split);
+        
+        $('#text0').val(data_split[0]);
+        
+        $('.append_new_tickets_val').remove();
+        var append_val='';
+        for(var i=1;i<data_split.length;i++){
+          var value = data_split[i];
+                   
+          append_val += '<div style="display: block; position:relative" class="append_new_tickets_val"><input type="text" name="mytext[]" class="related_ticket_ids form-control" placeholder="Enter Ticket Id" value = '+value+'><div class="actions_btn"><button class="add_field_button btn btn-success" id="add" style="color:#fff">+</button><button id="minus" class="remove_field btn btn-danger" style="color:#fff">-</button></div><div id="danger2" class="danger6 text-center" style="display: none;"> <span aria-hidden="true" class="danger_sign" style="position:absolute;margin-left:-1.5%;margin-top:-1%;">×</span><p style="position:absolute;color:#6E6E6E;font-size:13px;margin-left:8%">Please Enter The Required Field</p></div></div>';        
+          
+        }
+        $('.input_fields_wrap').append(append_val);
+        
+      }
+      
+      $('.input_fields_wrap').show();
+     
+
+    } else {
+      
+    }
+}
+
+function showValue(myVal) {
+    debugger;
+    var val = $("#box").val();
+    
+    currentStep += 1;
+    var element = document.getElementById("bullet");
+    var element2 = document.getElementById("bullet2");
+    var element3 = document.getElementById("bullet0");
+    //  console.log(val);199
+    //  console.log(myVal);200
+    if (myVal === val) {
+    //  console.log(currentStep);202
+      if (currentStep === 2) {
+
+        $("#box").prop("disabled", true);
+        $("#nextBtn").css("background", "#0066ff");
+        $("#previousBtn").css({
+          border: "1px solid #0066ff",
+          color: "#0066ff"
+        })
+        $("#form-adjust").css("display", "block");
+        
+        $("#tick").css("display", "none");
+        $("#tick2").css("display", "none");
+        $("#tick3").css("display", "none");
+        $("#tick4").css("display", "none");
+        $("#tick5").css("display", "none");
+        element.classList.add("completed3");
+        element.classList.remove("completed1");
+        element2.classList.remove("completed1");
+        element3.classList.add("completed1");
+        $("#nextBtn").html("Next");
+      }
+
+      if (currentStep === MAX_STEPS) {
+        checking2();
+        $("#nextBtn").on("click", function () {
+          checking2();
+        });
+      }
+
+    } else {
+
+      swal({
+        title: "",
+        text: "Ticket Error Found!\n",
+        type: "warning",
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ok",
+      });
+      previousBtn.disabled = true;
+      currentStep = 1;
+    }
+}  
+
+  var all_step_three_data = [];
+  
+
+  function updateButton_new(val){
+  
+    var btnSubmit = document.getElementById("nextBtn");
+    
+    $('.flex #radio1')[0].checked= false;
+
+    $('.flex #radio2')[0].checked= false;
+
+    $('.flex #radio3')[0].checked= false;
+    
+    $('.no_temp').removeClass('enabledinput');
+    $('.no_temp').addClass('disabledinput');    
+    
+    $('.yes_temp').removeClass('enabledinput');
+    $('.yes_temp').addClass('disabledinput');
+    
+    make_template_textarea_or_not = 0;       
+        all_step_three_data =val;
+       
+        $('.alert-danger').remove();
+        //anupam add 15 august 2020        
+        manage_data.updated_status_text('status_loader_text_updated');
+        //anupam added 15 august 2020
+        $('#status_loader_text').hide();
+        
+        if (val[0] != "error") {
+            console.log(val[3]);
+            ticket_id_row_val = val[1];
+            active_sheet_id = val[2];
+
+            if (val[0] == '') {
+                check_get_ticket_status = true;
+                last_selected_no = parseInt(0);
+                ticket_id_track = [];
+                last_selected_option_id_val = parseInt(last_selected_no);
+            } 
+
+            if(val[0] == '' || val[0] == 'second_Stage'){
+              
+               $(".step-text2").addClass("active");
+                btnSubmit.disabled = false;               
+              $("#stepProgressBar").css({
+                 "margin-top" : "-24%"
+              })              
+              $('.new_ticket').css("display","block");
+              $("#bullet0").removeClass("shadowing");
+              $('#bullet').addClass('completed3 shadowing completed1');             
+              last_selected_no = parseInt(0);
+              ticket_id_track = [];
+              last_selected_option_id_val = parseInt(last_selected_no);
+              showData(val[3]);
+              var element = document.getElementById("bullet");
+              var element2 = document.getElementById("bullet2");
+              var element3 = document.getElementById("bullet0");
+              $("#box").prop("disabled", true);
+              $("#nextBtn").css("background", "#0066ff");
+              $("#previousBtn").css({
+                border: "1px solid #0066ff",
+                color: "#0066ff"
+              })
+              
+              $("#form-adjust").css("display", "block");             
+              $(".error_disp").css("display", "none"); 
+              element.classList.add("completed3");
+              element.classList.remove("completed1");
+              element2.classList.remove("completed1");
+              element3.classList.add("completed1");
+              $("#nextBtn").html("Next");
+              currentStep = 2;
+              $("#box").prop("disabled", true);
+              $('#insert_temp_btn_div').hide();
+              $('#no_temp_btn_div').hide();
+              
+            }
+            else {
+                           
+              showData(val[3]);
+                     
+              $('.new_ticket').css("display","block");
+              $('#bullet').addClass('completed3 completed1');
+              $('#bullet2').addClass('completed2 completed1');             
+              currentStep = 3;
+              $("#nextBtn").html("Finish");              
+              $("#form-adjust").css("display", "none");
+              $(".error_disp").css("display", "none"); 
+              step_three(all_step_three_data);
+               if(!$('#add_ticket_process_text').is(':visible')){
+                  
+                  $('#all_main_options_div_id').prepend('<h2 style="font-weight: bold;font-size: 21px;font-family: Roboto;margin-top: 20px;" id="add_ticket_process_text">Add Ticket Process</h2>');
+              }
+            }
+
+        } else {
+            previousBtn.disabled = true;
+            $("#box").prop("disabled", false);
+            $('.modal').modal('hide');
+             swal({
+                title: "",
+                text: "Ticket Error Found!\nPlease Check The Ticket Url and Try Again.",
+                icon : "error",
+                dangerMode : "true"
+              });
+
+        }
+        $('#main_loader').hide();
+        
+  }
+//Next Button event validates ticket from activesheet and input given by user
+
+$(document).on('click','#nextBtn',function(e){
+  previousBtn.disabled = false;
+
+  $('.flex #radio1')[0].checked= false
+
+  $('.flex #radio2')[0].checked= false
+
+  $('.flex #radio3')[0].checked= false
+
+  check_ticket = $("#box").val();
+  if(currentStep==1){
+    $('#main_loader').show();
+    $("#main").css({
+      "margin-top" : "-17%"
+    })
+         
+    $('#tickets_ids').hide();
+    $('#insert_temp_btn_div').hide();
+    $('#no_temp_btn_div').hide();
+    google.script.run
+            .withSuccessHandler(updateButton_new)
+            .withUserObject(this)
+            .getLastValue(check_ticket, all_lang_text['check_ticket_id_col']['text'], insert_val_col_name);
+  }
+  else if(currentStep==2){
+
+    $("#box").prop("disabled", true);
+    $('#insert_temp_btn_div').hide();
+    $('#no_temp_btn_div').hide();
+    
+    checking2();
+ 
+    if(!$('#add_ticket_process_text').is(':visible')){
+        $('#all_main_options_div_id').prepend('<h2 style="font-weight: bold;font-size: 21px;font-family: Roboto;margin-top: 20px;" id="add_ticket_process_text">Add Ticket Process</h2>');
+    }
+  }
+  else if(currentStep==3){
+
+   var x = $("#radio1").attr("checked");
+   var y = $("#radio2").attr("checked");
+   var z = $("#radio3").attr("checked");
+  
+   if(x == "checked" || y == "checked" || z == "checked"){
+   
+   $('input[type = radio]').removeAttr('checked');
+     $("#myModal").show();
+     $("#myModal").css({
+        "height": "100%",
+        "background-color" : "rgba(0,0,0,0.4)"
+     })
+        $('.modal-content').show();
+        $("#templateinfo").html("Saving...")
+        $('.modal-content').css({
+           "background-color" : "#fff"
+        })
+        $('#myModal').delay(1000).fadeOut(1000);
+    $("#radio1").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio2").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio3").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    $(".step-text3").removeClass("active");
+    $(".step-text2").removeClass("active");
+     $("#stepProgressBar").css({
+       "margin-top" : "-23%"
+    })
+    $('.orderOptions').prop("selectedIndex",0);
+    $('.orderFormTitle').hide();
+    $('.orderDetailBox').each(function(){
+       $('.orderDetailBox').remove();
+    })
+    
+        $('.append_new_tickets_val').each(function(){
+      $('.append_new_tickets_val').remove();
+    })
+    $('.related_ticket_ids').each(function(){
+      $('.related_ticket_ids').val("");
+    })
+    
+    //added by rubal 1 april 2021
+    $('#order-status').val('');
+    $('.other-tickets').prop('selectedIndex',0);
+    $('#status_loader_text').hide();
+    $('#insert_temp_btn_div').hide();
+    $('#no_temp_btn_div').hide();
+    $('#insert_temp_btn_div').hide();
+    $('#all_main_options_div_id').hide();
+    $('#nextBtn').html('Next');
+    $("#box").prop("disabled", false);
+    $('#bullet0').removeClass();
+    $('#bullet0').addClass('bullet completed4');
+    $("#bullet0").addClass("shadowing");
+    $('#bullet').removeClass();
+    $('#bullet').addClass('bullet completed');
+    $('#bullet2').removeClass();
+    $('#bullet2').addClass('bullet completed2');
+    var btnSubmit = document.getElementById("nextBtn");
+    btnSubmit.disabled = true;
+    btnSubmit.style.background = "#AAAAAA";
+    $(".new_ticket").css("display","none");
+    $("#previousBtn").css({
+      border: " 1px solid #AAAAAA",
+      color: "#AAAAAA"
+    })
+    
+    $("#previousBtn").prop("disabled", true);
+    $("#box").prop("disabled", false);
+    $("#box").val('');
+    currentStep=1;
+   
+    
+    $('#tickets_ids').hide();
+    if(!$('#add_ticket_process_text').is(':visible')){
+        $('#all_main_options_div_id').prepend('<h2 style="font-weight: bold;font-size: 21px;font-family: Roboto;margin-top: 20px;" id="add_ticket_process_text">Add Ticket Process</h2>');
+    }
+    }else{
+        swal({
+            text: "Please Fill The Required Fields To Continue.",
+            icon: "error",
+            dangerMode: "true"
+         })
+    }
+  }
+ 
+})
+ 
+//Back Button Events
+const previousBtn = document.getElementById('previousBtn');
+const nextBtn = document.getElementById('nextBtn');
+const bullets = [...document.querySelectorAll('.bullet')];
+var ele = document.getElementById("bullet2");
+var ele2 = document.getElementById("bullet");
+var ele3 = document.getElementById("bullet0");
+const MAX_STEPS = 3;
+let currentStep = 1;
+
+function myFunction2() {
+  $('#insert_temp_btn_div').hide();
+  $('#no_temp_btn_div').hide();
+  // $('.holder').hide();
+  $("#p1").css("display", "none");
+  $("#cross_tck_mark1").css("display", "none");
+  $("#p2").css("display", "none");
+  $("#cross_tck_mark2").css("display", "none");
+  $("#p3").css("display", "none");
+  $("#cross_tck_mark3").css("display", "none");
+  $("#p4").css("display", "none");
+  $("#cross_tck_mark4").css("display", "none");
+  $("#p5").css("display", "none");
+  $("#cross_tck_mark5").css("display", "none");
+  
+  if(currentStep == 2){
+   
+    currentStep =1;
+    $('.other-tickets').prop('selectedIndex',0);
+    $('#order-status').val('');
+    $('.related_ticket_ids').css({
+       "border" : "2px solid #B8B8B8"
+    })
+    $('.danger6').css({
+       'display' : 'none'
+    })
+     $("#order-status").css({
+     "border" : "2px solid #B8B8B8"
+     })
+   $('.new_ticket').css("display","none");
+    $(".step-text2").removeClass("active");
+    $("#radio1").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio2").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio3").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    $("#stepProgressBar").css({
+       "margin-top" : "-23%"
+    })
+    $("#bullet").removeClass("shadowing");
+    $("#bullet0").addClass("shadowing");
+    $("#maintain").css("display", "none");
+    $("#no_temp_btn_div").css("display", "none");
+    $("#all_main_options_div_id").css("display", "none");
+    $("#form-adjust").css("display", "none");
+    $("#order-status").val("");
+    $("#t_link").val("");
+    $(".danger").css("display","none");
+    $(".danger2").css("display","none");
+    $(".danger3").css("display","none");
+    $(".danger4").css("display","none");
+    $(".danger5").css("display","none");
+    $(".danger7").css("display","none");
+    $("#p7").css("display","none");
+    ele3.classList.remove("completed1");
+    ele2.classList.remove("completed3");
+    $("#box").prop("disabled", false);
+    $("#box").val("");
+    $("#nextBtn").html("Next");
+    $("#nextBtn").css("background", "#AAAAAA");
+    $("#nextBtn").prop("disabled", true);
+    $("#previousBtn").css({
+      border: " 1px solid #AAAAAA",
+      color: "#AAAAAA"
+    })
+    $("#previousBtn").prop("disabled", true);
+    $('.orderOptions').prop("selectedIndex",0);
+   $('.orderDetailBox').each(function(){
+     $('.orderDetailBox').remove();
+   })
+   $('.orderFormTitle').hide();
+   
+   $('.related_ticket_ids').each(function(){
+    $('.related_ticket_ids').val("");
+   })
+  }
+  
+  else if(currentStep == 3){
+
+             var value = '';
+             if($('.other-tickets').val() == "Yes"){
+               $('#tickets_ids').show();
+             }else{
+               $('#tickets_ids').hide();
+             }
+              $('input[type = radio]').removeAttr('checked');
+              var b = $("#orderStatus").val();
+               if(b == 'Select Order Status' || b == 'None'){
+
+                       $("#status").css("display","none");
+                       $("#track-link").css("display","none");
+                       $(".returnlabelsts").css("display","none");
+                       $(".id_300").css("display","none");
+                       $("#slider").css({
+                        "margin-top" : "0%"
+                       })
+                        $(".danger2").css("display","none");
+                        $("#p2").css("display","none");
+                        $(".danger3").css("display","none");
+                        $("#p3").css("display","none");
+                        $(".danger4").css("display","none");
+                        $("#p4").css("display","none");
+                        $(".danger5").css("display","none");
+                        $("#p5").css("display","none");
+                        $("#order-status").css({
+                           "border" : "2px solid #B8B8B8"
+                        })
+                          $("#t_link").css({
+                           "border" : "2px solid #B8B8B8"
+                        })
+                     
+              }else if (b == "Awaiting Shipment" || b == "Awaiting Shipment for more than 5 days"){
+                  
+                  $("#track-link").css("display","none");
+                  $(".returnlabelsts").css("display","none");
+                  $(".id_300").css("display","none");
+                  $("#slider").css({
+                        "margin-top" : "0%"
+                  })
+              }else{
+                       
+                       $("#track-link").css("display","block");
+                       $(".returnlabelsts").css("display","block");
+                       $(".id_300").css("display","block");
+                       $("#slider").css({
+                        "margin-top" : "0%"
+                       })
+              }
+
+    $("#radio1").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio2").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio3").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+
+    $(".step-text3").removeClass("active");
+    $("#bullet2").removeClass("shadowing");
+    $("#bullet").addClass("shadowing");
+    var btnSubmit = document.getElementById("nextBtn");
+    btnSubmit.disabled = false;
+    $("#nextBtn").css("background", "#0066ff");  
+    $("#maintain").css("display", "none");
+    $("#form-adjust").css("display", "block");
+    $("#no_temp_btn_div").css("display", "none");
+    $("#all_main_options_div_id").css("display", "none");
+    $("#text").val("");
+    $("#nextBtn").html("Next");
+    ele.classList.remove("completed1");
+    ele2.classList.remove("completed1");
+    currentStep = 2;
+    
+  }
+}
+
+function step_three(val){
+   $('input[type = radio]').removeAttr('checked');
+   var orderOptionVal = $('.orderOptions').val();
+   if(orderOptionVal == "Select Option"){
+     $('.orderOptions').prop('selectedIndex',2);
+   }
+   var otherticketVal = $('.other-tickets').val();
+   if(otherticketVal == "Select Option"){
+     $('.other-tickets').prop('selectedIndex',2);
+   }
+   $("#nextBtn").prop("disabled",false);
+   $("#stepProgressBar").css({
+                 "margin-top" : "-24%"
+              })
+  $("#nextBtn").css({
+    "background"  : "0066ff"  
+  })
+    $("#radio1").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio2").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    
+     $("#radio3").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    $(".step-text3").addClass("active");
+     $(".step-text2").addClass("active");
+    $(".error").css("display","none");
+    currentStep = 3;
+    $("#bullet0").removeClass("shadowing");
+    $("#bullet2").addClass("shadowing");
+    $("#form-adjust").css("display", "none");
+    $(".error_disp").css("display", "none");
+    
+    $("#previousBtn").css({
+      "border" : "1px solid #0066FF",
+      "color" : "#0066FF"
+    })
+    
+    $(document).on("change",".select_options",function(){
+      $(".error").css("display","block");
+      if($('#insert_template_textarea').is(':visible')){
+       $(".error").css("display","block");
+       $(".error").html('<button type="button" class="temp_btn2" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>Template Found </button>');
+       $(".error").css({
+          "color" : "green"    
+       })
+      }else{
+        $(".error").html('<button type="button" class="temp_btn" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>No Template Found </button>');
+       $(".error").css({
+          "color" : "red" 
+       })
+      }
+    });
+    
+    var check_val_split = val[0].split('(');
+    last_selected_no = parseInt(check_val_split[0]);
+    //console.log(last_selected_no);
+    manage_data.handel_all_parents_ids();
+    manage_data.update_ticket_selection_arr(all_parents_ids, last_selected_no);
+    if (typeof(ticket_id_track[0]) == "string") {
+        ticket_id_track.unshift(parseInt(last_selected_no));
+    } else {
+        ticket_id_track[0] = parseInt(last_selected_no);
+    }
+
+    check_old_selected_options = manage_data.make_ticket_track_val();
+
+    var show_old_selected_msg_modal = manage_data.show_old_selected_vals();
+
+    $('#prev_div_modal').html(' ');
+    $('#prev_div_modal').append('<p>' + all_lang_text['below_check_last_selected_options']['text'] + '</p>');
+    $('#prev_div_modal').append('<p>' + show_old_selected_msg_modal + '</p>');
+    $('.modal').modal('hide');
+    $('#insert_temp_btn_div').hide();
+    $('#no_temp_btn_div').hide();
+    manage_data.old_temp_accept();
+    $('#prev_selection').modal('hide');
+    $('.all_main_options_div').show();
+    
+    if($('#insert_template_textarea').is(':visible')){
+       $('.no_temp').removeClass('enabledinput');
+       $('.no_temp').addClass('disabledinput');
+       $('.yes_temp').removeClass('disabledinput');
+       $('.yes_temp').addClass('enabledinput');     
+       $('.flex #radio1')[0].checked= false    
+       $('.flex #radio2')[0].checked= false;     
+       $('.flex #radio3')[0].checked= false;
+    }
+    else{    
+      $('.no_temp').removeClass('disabledinput');
+      $('.no_temp').addClass('enabledinput');   
+       $('.yes_temp').removeClass('enabledinput');
+       $('.yes_temp').addClass('disabledinput');
+       $('.flex #radio1')[0].checked= false
+       $('.flex #radio2')[0].checked= false
+       $('.flex #radio3')[0].checked= false
+    }
+}
+
+function checking2() { 
+  var x = fieldsValidation();
+  //selectElement = document.querySelector('#sentiments');
+  output = $('#sentiments').val();
+  
+  //selectElement4 = document.querySelector('.other-tickets');
+  output4 = $('.other-tickets').val();
+  var o_status = $("#order-status").val();
+  var t_link = $("#t_link").val();
+  
+  var orderStatus = $('.orderOptions').val();
+  
+   var flag1 = 0;
+   $('.optionsId').each(function(){
+      if($(this).is(":visible") && $(this).val() == "Select Option"){
+       flag1 = 1;
+       return false;
+      }else{
+      flag1 = 0;  
+   }
+ })
+  
+  
+   var flag2 = 0;  
+   $('.otherId').each(function(){
+    if($(this).is(":visible") && $(this).val().trim() == ""){
+      flag2 = 1;
+      return false;
+   }else{
+      flag2 = 0;
+     }
+   })
+   
+  
+  var flag3 = 0;
+   $('.optionsId').each(function(){
+   if($(this).is(':visible')){
+     $('.orderStatus').each(function(){
+       if($(this).val() == "Select Order Status"){
+         flag3 = 1;
+         return false;
+       }else{
+        flag3 = 0;
+       }
+     })
+    }else{
+     flag3 = 0;
+    }
+   })
+    
+
+   
+  
+   var flag4 = 0;
+   $('.optionsId').each(function(){
+    if($(this).is(':visible')){
+   $('.orderStatus').each(function(){
+     if($(this).val() == "Awaiting Shipment" ||$(this).val() == "Awaiting Shipment for more than 5 days"){
+      if($(this).closest('.orderDetailBox').find('.order_added_date').val() == ""){
+       flag4 = 1;
+       return false;
+      }
+    }else{
+      flag4 = 0;
+    }
+   })
+   }else{
+     flag4 = 0;
+   }
+   })
+ 
+  var flag5 = 0;
+   $('.optionsId').each(function(){
+    if($(this).is(':visible')){
+  $('.orderStatus').each(function(){
+     if($(this).val() == "Shipped But Pre-Shipment" || $(this).val() == "Shipped And In-Transit" || $(this).val() == "Shipped (In-Transit) But No Movement For 5 days" || $(this).val() == "Delivered But Not Received" || $(this).val() == "Delivered"){
+     
+         if($(this).closest('.orderDetailBox').find('.track_link').val().trim() == ""){
+          flag5 = 1;
+          return false;
+         }
+ 
+     }else{
+      flag5 = 0;
+     }
+  })
+  }else{
+     flag5 = 0;
+  }
+  })
+  
+  
+  var flag6 = 0;
+  $('.optionsId').each(function(){
+  if($(this).is(':visible')){
+  $('.orderStatus').each(function(){
+     if($(this).val() == "Shipped But Pre-Shipment" || $(this).val() == "Shipped And In-Transit" || $(this).val() == "Shipped (In-Transit) But No Movement For 5 days" || $(this).val() == "Delivered But Not Received" || $(this).val() == "Delivered"){
+     
+         if($(this).closest('.orderDetailBox').find('.returnlabelsts_select').val() == "Select Return Label"){
+          flag6 = 1;
+          return false;
+         }
+ 
+     }else{
+      flag6 = 0;
+     }
+  })
+ }else{
+   flag6 = 0;
+ }
+ })
+ 
+  
+
+  var k = $('.orderOptions').val(); 
+  var optionIds = optionIdValidation();
+  
+ 
+
+  if (output != "Select Sentiment" && output4 != 'Select Option' && x == 1 && k != "Select Option"  &&  flag1 == 0 && flag2 == 0 && flag3 == 0 && flag4 == 0 && flag5 == 0 && flag6 == 0) {
+    
+    $("#tickets_ids").hide();
+    step_three(all_step_three_data);
+    $("#order-status").css({
+     "border" : "2px solid #B8B8B8"
+     })
+     $('.row3').each(function(){
+      $('.row3').hide();
+    })
+     $('.row4').each(function(){
+      $('.row4').hide();
+    })
+     $('.row5').each(function(){
+      $('.row5').hide();
+    })
+    $('.row6').each(function(){
+      $('.row6').hide();
+    })
+    var element2 = document.getElementById("bullet");
+    var element3 = document.getElementById("bullet2");
+    element2.classList.add("completed1");
+    element2.classList.remove("shadowing");
+    element3.classList.add("completed1");
+    element3.classList.add("shadowing");
+    $("#nextBtn").html("Finish");
+    $("#form-adjust").css("display", "none");
+    $("#no_temp_found").css({
+      width: "53%"
+    })
+    
+    if($('.other-tickets').val() == "Yes"){
+    var arr = [];
+    for(var i=0;i<$('.related_ticket_ids').length;i++){
+      var value =  $('.related_ticket_ids')[i].value;
+        arr.push(value);
+     }
+    var new_val = arr.join(',');
+    }
+    
+    if($('.orderOptions').val() == "Yes"){
+    var optionsId = [];
+    var otherOptionId = [];
+    var new_value = [];
+    for(var i =0;i<$('.optionsId').length;i++){
+       var value =  $('.optionsId')[i].value;
+         if(value == "Other"){
+            
+                 new_value = $('.otherId')[i].value;
+                 optionsId.push("Other->" + new_value);
+             }
+         if(value != "Other"){
+            
+             optionsId.push(value); 
+         }    
+    }
+    var optionsid = optionsId.join('--');
+    if(optionsid == "Select Option"){
+      optionsid = "";
+    }
+    
+    var orderStatus = [];
+    for(var i =0; i< $('.orderStatus').length;i++){
+      var value =  $('.orderStatus')[i].value;
+      if(value == "Select Order Status"){
+         orderStatus.push("");
+      }else{
+        orderStatus.push(value);
+      }  
+    }
+    var orderstatus = orderStatus.join(',');
+    
+    var orderDate = [];
+    for(var i=0;i<$('.order_added_date').length;i++){
+      var value =  $('.order_added_date')[i].value;
+      orderDate.push(value);
+    }
+    var orderdate = orderDate.join(','); 
+    
+     var track_link = [];
+    for(var i=0;i<$('.track_link').length;i++){
+      var value =  $('.track_link')[i].value;
+      track_link.push(value);
+    }
+    var trackLink = track_link.join(',');
+    
+    var returnlabel = [];
+    for(var i =0;i<$('.returnlabelsts_select').length;i++){
+      var value =  $('.returnlabelsts_select')[i].value;
+      if(value == "Select Return Label"){
+          value = "";
+      }
+      returnlabel.push(value);
+    }
+   var returnLabel = returnlabel.join(',');
+   }
+    google.script.run.setValues(output,new_val,orderstatus,orderdate,trackLink,returnLabel,optionsid); 
+    var btnSubmit = document.getElementById("nextBtn");
+    
+  } else {
+    swal({
+  text: "Please Fill The Required Fields To Continue.",
+  icon: "error",
+  dangerMode: "true"
+
+})
+  
+
+  
+  $('.otherId').each(function(){
+    if($(this).val().trim() == ""){
+     $(this).parent('div').parent('div').find('.row6').css('display','block');
+    }else{
+       $(this).parent('div').parent('div').find('.row6').css('display','none');
+    }
+  })
+ 
+
+      $('.optionsId').each(function(){
+      if($(this).val() != "Select Option"){
+        if($(this).closest('.orderDetailBox').find('.orderStatus').val() == "Select Order Status"){ 
+            $(this).closest('.orderDetailBox').find('.orderStatus_div').css('display','block');
+           }else if($(this).closest('.orderDetailBox').find('.orderStatus').val() == "Awaiting Shipment" || $(this).closest('.orderDetailBox').find('.orderStatus').val() == "Awaiting Shipment for more than 5 days"){
+             $(this).siblings('.row2').css('display','none');
+             $(this).closest('.orderDetailBox').find('.orderStatus_div').css('display','block');
+             $(this).closest('.orderDetailBox').find('.status').css('display','block');   
+           }else if($(this).closest('.orderDetailBox').find('.orderStatus').val() == "None"){  
+               $(this).closest('.orderDetailBox').find('.orderStatus_div').css('display','none');
+               $(this).closest('.orderDetailBox').find('.status').css('display','none');
+               $(this).closest('.orderDetailBox').find('.track-link').css('display','none');
+               $(this).closest('.orderDetailBox').find('.returnlabelsts_div').css('display','none');
+           }else{
+            $(this).closest('.orderDetailBox').find('.orderStatus_div').css('display','block');
+            $(this).closest('.orderDetailBox').find('.status').css('display','block');
+            $(this).closest('.orderDetailBox').find('.track-link').css('display','block');
+            $(this).closest('.orderDetailBox').find('.returnlabelsts_div').css('display','block');
+            
+           }
+       
+      }
+     })
+    
+   
+      
+
+  $('.orderStatus').each(function(){
+    if($(this).val() == "Select Order Status"){
+       $(this).parent('div').parent('div').find('.row2').css('display','block'); 
+    }else{
+      $(this).parent('div').parent('div').find('.row2').css('display','none'); 
+    }
+  })
+     
+   $('.order_added_date').each(function(){
+      if($(this).val() == ""){
+       $(this).parent('div').parent('div').find('.row3').css('display','block'); 
+      }else{
+        $(this).parent('div').parent('div').find('.row3').css('display','none'); 
+      }
+   })
+  
+  
+   $('.track_link').each(function(){
+      if($(this).val().trim() == ""){
+           $(this).parent('div').parent('div').find('.row4').css('display','block'); 
+         }else{
+           $(this).parent('div').parent('div').find('.row4').css('display','none');
+         }
+   })
+   
+    $('.returnlabelsts_select').each(function(){
+      if($(this).val() == "Select Return Label"){
+           $(this).parent('div').parent('div').find('.row5').css('display','block');
+         }else{
+           $(this).parent('div').parent('div').find('.row5').css('display','none');
+         }
+   })
+  
+    if($('.orderOptions').val() == "Select Option"){
+        $("#p10").css("display", "block");
+        $(".danger10").css("display", "block");
+    }
+    
+    if($('#sentiments').val() == 'Select Sentiment'){
+        $("#p1").css("display", "block");
+        $(".danger").css("display", "block");
+    }
+
+    if($('.other-tickets').val() == 'Select Option'){
+      $("#p7").css("display", "block");
+      $(".danger7").css("display", "block");
+    }
+ 
+  }
+
+}
+
+function checking(){    
+    $('.select_options').val(0).change();
+    check_get_ticket_status = false;
+    ticket_id_track = [];
+    check_ticket = manage_data.check_ticket_status();
+    google.script.run
+      .withSuccessHandler(manage_data.updateButton)
+      .withUserObject(this)
+      .getLastValue(check_ticket, all_lang_text['check_ticket_id_col']['text'], insert_val_col_name);
+}
+
+function resetData(){
+   
+   $('.other-tickets').prop('selectedIndex',0);
+   $('.orderOptions').prop('selectedIndex',0);
+   $('.orderDetailBox').each(function(){
+      $('.orderDetailBox').remove();
+   })
+   $('.orderFormTitle').hide();
+   $('#form-adjust').css("display","none");
+   $('.new_ticket').css("display","none");
+   $('#box').val("");
+   $('#order-status').val('');
+   $('.related_ticket_ids').css({
+       "border" : "2px solid #B8B8B8"
+   })
+    $("#previousBtn").css({
+      border: " 1px solid #AAAAAA",
+      color: "#AAAAAA"
+    })
+    $("#nextBtn").css({
+      background : "#AAAAAA"
+    })
+    $('.append_new_tickets_val').each(function(){
+      $('.append_new_tickets_val').remove();
+    })
+    $('.related_ticket_ids').each(function(){
+      $('.related_ticket_ids').val("");
+    })
+    
+    $("#p1").css("display","none");
+    $(".danger").css("display","none");
+    $("#p2").css("display","none");
+    $(".danger2").css("display","none");
+    $("#p3").css("display","none");
+    $(".danger3").css("display","none");
+    $("#p4").css("display","none");
+    $(".danger4").css("display","none");
+    $("#p5").css("display","none");
+    $(".danger5").css("display","none");
+    $("#p6").css("display","none");
+    $(".danger6").css("display","none");
+    $(".danger7").css("display","none");
+    $("#p7").css("display","none");
+    $("#nextBtn").prop("disabled",true);
+    $("#previousBtn").prop("disabled", true);
+    $("#box").prop("disabled", false);
+    $("#box").val('');
+     $("#radio1").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })    
+     $("#radio2").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })   
+     $("#radio3").css({
+      "background-color" : "#fff",
+      "border" : "2px solid #bbbbbb"
+    })
+    $('#stepProgressBar').css({
+     'margin-top' : "-23%"
+    })
+    $(".step-text3").removeClass("active");
+    $(".step-text2").removeClass("active");    
+    $('#status_loader_text').hide();
+    $('#insert_temp_btn_div').hide();
+    $('#no_temp_btn_div').hide();
+    $('#insert_temp_btn_div').hide();
+    $('#all_main_options_div_id').hide();
+    $('#nextBtn').html('Next');
+    $("#box").prop("disabled", false);
+    $('#bullet0').removeClass();
+    $('#bullet0').addClass('bullet completed4');
+    $("#bullet0").addClass("shadowing");
+    $('#bullet').removeClass();
+    $('#bullet').addClass('bullet completed');
+    $('#bullet2').removeClass();
+    $('#bullet2').addClass('bullet completed2');
+    var btnSubmit = document.getElementById("nextBtn");
+    currentStep = 1;
+   
+}
+
+$(document).on("click",".allclear",function(){
+    $(".select_options").css({
+       "display" : "none"
+    })
+    $("#main_options").css({
+       "display" : "block"
+    })
+    $('#main_options').prop('selectedIndex', 0);
+    $('.temp_btn').css({
+       "display" : 'none'
+    })
+    $('.temp_btn2').css({
+       "display" : 'none'
+    })
+    $('#insert_template_textarea').css({
+        "display" : "none"
+    })    
+    $('.no_temp').removeClass("disabledinput");
+    $('.no_temp').addClass("enabledinput");
+    $('.yes_temp').removeClass("enabledinput");
+    $('.yes_temp').addClass("disabledinput");
+     $('input[type = radio]').removeAttr('checked');
+     $("#radio1").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb"  
+        })  
+        
+        $("#radio2").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb" 
+       })
+       
+       $("#radio3").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb"  
+       })
+   var status_color = "white";
+   var val_return = " ";
+   google.script.run.withSuccessHandler(manage_data.check_ticket_match_return).withUserObject(this).update_temp_status(status, status_color, ticket_id_row_val, check_ticket, insert_col_temp_status, temp_text, insert_temp_text_col, all_lang_text['check_ticket_id_col']['text'],val_return, insert_val_col_name);
+});
+
+function optionIdValidation(){
+   var counter = 0;
+    var x = showOrderDetails();
+    if(x == 1){
+      $('.optionsId').each(function(){
+          
+          if($(this).val() == "Select Option"){
+            $(this).siblings('.row1').css('display','block');
+           
+           }else{
+             $(this).siblings('.row1').css('display','none');
+           }
+      })
+     counter = 1;
+    }else{
+       counter = 0;
+    }
+    return counter;
+}
+
+ </script>
+ <script src="https://helplama.com/app/helplama_dashboard/google_sheet_sidebar/sidebar_15.js"></script>
+<script>
+var id = "main_loader";
+var class_name = "main_loader";
+var append_class_or_id = "body";
+var style_obj ={display:'none'};
+var attr_obj = {
+
+};
+var return_html = HTML.loader(id, class_name, style_obj, append_class_or_id, attr_obj);
+$('#insert_temp_btn_div').html('');
+
+$('#insert_temp_btn_div').html('<button type="button" class="temp_btn error" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>No Template Found</button> <div class="form-group" id="add_temp_status"> <label><b>Were you able to find the right template?<span style = "color:red;">*</span></b></label> <div class="flex enabledinput no_temp" data-value="'+all_lang_text['no_temp_text'].text+'"><input type="radio"  name="radio" class="select_temp_type" id="radio1"/> <label for="radio1" class = "radiobuttonadjust">'+all_lang_text['no_temp_text'].text+'</label> </div> <div class="flex disabledinput yes_temp" data-value="'+all_lang_text['correct_temp_text'].text+'"> <input type="radio"  class="select_temp_type" name="radio" id="radio2" checked = "checked"/> <label for="radio2" class = "radiobuttonadjust">'+all_lang_text['correct_temp_text'].text+'</label> </div> <div class="flex disabledinput yes_temp"  data-value="'+all_lang_text['incorrect_temp_text'].text+'"> <input type="radio"  class="select_temp_type" name="radio" id="radio3" /> <label for="radio3" class = "radiobuttonadjust">'+all_lang_text['incorrect_temp_text'].text+'</label> </div> </div><div onclick = "radioChecking() "class = "allclear">Clear Selections</div>');
+
+$(document).on('click', '.flex', function(event) {
+    var flag =1;
+    event.preventDefault();
+    status_color = '';
+    status = '';       
+    temp_text = $('.tempelate').text();
+    $('#template_suggestion_id').val('');
+    $('#template_name_text_id').val('');
+    check_ticket = manage_data.check_ticket_status();
+    var show_path = manage_data.make_new_temp();
+    var id = "";
+    var class_name = "span_last_Selected_val";
+    var append_class_or_id = "";
+    var style_obj = all_lang_text['new_branch_sugg_text']['style'];
+    var attr_obj = {
+        'tag': 'span',
+        'text': '( '+show_path+' )'
+    };
+     var return_html = HTML.make_tag(id, class_name, style_obj, append_class_or_id, attr_obj);
+    $('.flex input').attr('checked',false);
+    $('#new_branch_status').html('');
+    $('.flex #radio2').attr('checked',true)
+    
+ if (event.target.parentElement.dataset.value == all_lang_text['correct_temp_text'].text) {    
+   $("#radio2").attr("checked","checked");
+   $("#myModal").show();
+   $('.modal-content').show();
+    $('.modal-content').css({
+           "background-color" : "#AAE5AC"
+        })
+      $("#myModal").css({
+           "background" : "none"
+        })
+    $('#myModal').delay(1000).fadeOut(2000);
+     $("#templateinfo").html("Template Copied!");
+        $("#radio2").css({
+          "background-color" : "#28a745",
+          "border" : "1px solid #28a745"
+        })
+       
+        $("#radio1").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb" 
+       })
+       
+       $("#radio3").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb"  
+       })
+        status_color = all_lang_text['correct_temp_color'].text;
+        btn_text = all_lang_text['correct_temp_text'].text
+        var split_text = btn_text.split('/');
+        status = split_text[0];
+        manage_data.new_copy();  
+        
+    } else if (event.target.parentElement.dataset.value == all_lang_text['incorrect_temp_text'].text) {
+        $("#radio3").attr("checked","checked");
+        $("#myModal").show();
+        $('.modal-content').show();
+        $('.modal-content').css({
+           "background-color" : "#FFFFAC"
+        })
+         $("#myModal").css({
+           "background" : "none"
+        })
+        $('#myModal').delay(1000).fadeOut(2000);
+        $("#templateinfo").html("Template Copied!");
+       
+       $("#radio3").css({
+         "background-color": "#ffc107",
+         "border" : "1px solid #ffc107" 
+       })      
+       $("#radio2").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb"  
+       })
+       $("#radio1").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb" 
+       })
+       
+        $('#new_branch_status').append(all_lang_text['new_branch_status_text'].text+return_html);
+        status_color = all_lang_text['incorrect_temp_color'].text;
+        btn_text = all_lang_text['incorrect_temp_text'].text
+        var split_text = btn_text.split('/');
+        status = split_text[0];
+        $('.modal').modal('hide');
+        manage_data.new_copy();
+        
+    } else if(event.target.parentElement.dataset.value != undefined) {
+        $('#new_branch_status').append(all_lang_text['new_branch_status_text'].text+return_html);
+        $('#radio1').attr("checked","checked"); 
+        //$("#radio1").is(":checked");
+        $("#myModal").show();
+        $('.modal-content').show();
+        $('.modal-content').css({
+           "background-color" : "#fff"
+        })
+        $("#templateinfo").html("Saving...");
+        $("#myModal").css({
+           "background" : "none"
+        })
+        $('#myModal').delay(1000).fadeOut(2000);
+           
+         $("#radio1").css({
+         "background-color": "#dc3545",
+         "border" : "1px solid #dc3545"  
+        })  
+        
+        $("#radio2").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb" 
+       })
+       
+       $("#radio3").css({
+         "background-color": "#fff",
+         "border" : "2px solid #bbbbbb"  
+       })       
+        status_color = all_lang_text['no_temp_color'].text;
+        btn_text = all_lang_text['no_temp_text'].text
+        var split_text = btn_text.split('/');
+        status = split_text[0];
+        $('.modal').modal('hide');
+ }
+    
+    if(event.target.parentElement.dataset.value != undefined){   
+      $('#status_loader_text').show();     
+      check_ticket = manage_data.check_ticket_status();      
+      var btnSubmit = document.getElementById("nextBtn");
+      btnSubmit.disabled = false;
+      $("#nextBtn").css("background", "#0066ff");
+      google.script.run.withSuccessHandler(manage_data.check_ticket_match_return).withUserObject(this).update_temp_status(status, status_color, ticket_id_row_val, check_ticket, insert_col_temp_status, temp_text, insert_temp_text_col, all_lang_text['check_ticket_id_col']['text'], val_return, insert_val_col_name);
+      val_return = "";
+    }
+})
+
+ $(document).on("change",".select_options",function(e){
+         $('input[type = radio]').removeAttr('checked');
+             $("#radio1").css({
+        
+          "background-color" : "#fff",
+          "border" : "2px solid #bbbbbb"
+           })
+             $("#radio2").css({
+        
+          "background-color" : "#fff",
+          "border" : "2px solid #bbbbbb"
+           })
+
+           $("#radio3").css({
+        
+          "background-color" : "#fff",
+          "border" : "2px solid #bbbbbb"
+           })
+        })       
+
+ function myData(){
+       var counter = 0;
+       var options = $('.other-tickets option:selected').text();
+       if(options === "Yes"){
+          $('.input_fields_wrap').css({
+             "display" : "block"
+          })
+          counter = 1;
+       }else{
+           $('.input_fields_wrap').css({
+             "display" : "none"
+          })
+          counter = 0;
+         }
+         return counter;
+       }
+
+function fieldsValidation(){
+    var flag = 0;
+    var x = myData();
+    var check_false_flag = 1;
+    if(x == 0){
+       $("#tickets_ids").hide()
+    }
+    if(x == 1){
+      $('.related_ticket_ids').each(function(){
+        debugger;
+        console.log($(this));
+        if($(this).val().trim() == '')
+        {
+          $(this).siblings().next()[0].style.display = 'block';
+          debugger;
+          console.log($(this));
+          $(this).css('border', '2px solid rgb(212, 1, 44)');
+          $("#tickets_ids").show();
+          flag = 0;
+          check_false_flag = 0;
+        }
+        else
+        {  
+          $(this).css('border', '2px solid #ced4da');
+          $(this).siblings().next()[0].style.display = 'none';
+          $("#tickets_ids").show();
+          flag = 1;
+        }
+      });
+    }else{
+       flag = 1;
+    }
+    if(!check_false_flag){
+      flag = 0;
+    }
+       return flag;
+    }
+  
+</script>
+</body>
+</html>
